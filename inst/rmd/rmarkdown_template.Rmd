@@ -1,0 +1,102 @@
+---
+editor_options: 
+  chunk_output_type: console
+params:
+  con: NULL
+  schema: NULL
+  tbl: NULL
+  title: 'My report title'
+  text: NULL
+  plot_distinct: TRUE
+  plot_type: 'gg'
+  plot_limit: 100L
+  out: TRUE
+  cols: NULL
+  var: NULL
+  output_dir: NULL # https://community.rstudio.com/t/is-it-possible-to-save-the-html-output-in-a-directory-which-is-not-the-one-where-the-rmd-file-resides/3588/6
+  output_file: 'report'
+  file: TRUE
+  file_format: 'csv'
+  file_type: 'json'
+  verbose: FALSE
+title: "`r params$title`"
+date: "`r format(Sys.Date(), '%d.%m.%Y')`"
+---
+
+```{r data, echo=FALSE, message=FALSE, warning=FALSE}
+tbl_l = fetch(con = con,
+              schema = schema,
+              tbl = tbl,
+              cols = cols,
+              var = var)
+meta_dt = meta(con = con,
+               schema = schema,
+               tbl = tbl,
+               output_dir = output_dir,
+               output_file = output_file)
+```
+
+```{r cars, echo=FALSE, results='asis'}
+if (!is.null(text)) {
+  if (file.exists(text)) {
+    readLines(text)
+  } else {
+    cat(text)
+  }
+}
+```
+
+## Meta
+
+```{r meta, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::kable(meta_dt)
+```
+
+## Table
+
+```{r table, echo=FALSE, message=FALSE, warning=FALSE}
+summary_dt = tbl_l$summary
+idx = grep('^distinct$|n_', names(summary_dt), value = TRUE)
+n_row = meta_dt[ variable == 'table rows', as.numeric(value) ]
+summary_dt[ ,
+            (idx) := lapply(.SD, function(x) perc_value(x, n_row)),
+            .SDcols = idx ]
+
+knitr::kable(summary_dt)
+```
+
+## Plots
+
+```{r plot, echo=FALSE, fig.height=7, fig.width=15, dpi=72, message=FALSE, warning=FALSE}
+if (plot_distinct) {
+  for (i in seq_along(tbl_l$distinct)) {
+    dat = tbl_l$distinct[[i]]
+    col = names(tbl_l$distinct)[i]
+    setDT(dat)
+    dat[ , var20 := substr(get(col), 1, 20) ]
+    if (!is.null(plot_limit))
+      dat = dat[1:plot_limit, ]
+    # plots
+    if (plot_type == 'gg')
+      print(pl_gg(dat = dat, col = col))
+    if (plot_type == 'bp')
+      pl_bp(dat = dat)
+    if (plot_type == 'tree')
+      pl_tree(dat = dat, index = col, vsize = 'n')
+  }
+} else {
+  print('Plots should not be printed.')
+}
+```
+
+```{r write, echo=FALSE, message=FALSE, warning=FALSE}
+if (is.null(file)) {
+  print('Files should not be written.')
+} else {
+  write_to_dir(l = tbl_l$distinct,
+               output_dir = output_dir,
+               output_file = output_file,
+               file_format = file_format,
+               file_type = file_type)
+}
+```
