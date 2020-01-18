@@ -1,12 +1,14 @@
-#' Create reports from data base tables, R-objects (data.table, data.frame, tibble) or disk files
+#' Create reports from data base tables, R table objects (data.table, data.frame, tibble)
 #'
-#' @import data.table, rio, rmarkdown, knitr, ggplot2, treemap
+#' @title Create reports of a table
+#' 
+#' @import data.table rmarkdown knitr ggplot2 treemap
 #'
-#' @param con Connection to data base, R-object (data.table, data.frame, tibble) or disk file (.xslx, .rds etc.). Required.
-#' @param schema Data base schema (if applicable)
-#' @param tbl Table to be used for summary report. Required.
-#' @param cols Table columns that should be summarised in report.
-#' @param var Table entries which should be comsidered in summary report.
+#' @param con Connection to data base, R-object (data.table, data.frame, tibble). Required.
+#' @param schema Data base schema (if applicable).
+#' @param tbl Table to be used for summary report (if applicable).
+#' @param col Table columns that should be summarised in report.
+#' @param entry Table entries which should be comsidered in summary report.
 #' @param title Title of summary report.
 #' @param text User defined text input to add some description to the report. Default NULL - no text. Can be a character vector or a file.
 #' @param plot_distinct Include plots of ordered distinct counts of each column in summary report.
@@ -43,8 +45,8 @@
 dbreport = function(con = NULL,
                     schema = NULL,
                     tbl = NULL,
-                    cols = NULL,
-                    var = NULL,
+                    col = NULL,
+                    entry = NULL,
                     title = 'My report title',
                     text = NULL,
                     plot_distinct = TRUE,
@@ -85,8 +87,8 @@ dbreport = function(con = NULL,
                       con = con,
                       schema = schema,
                       tbl = tbl,
-                      cols = cols,
-                      var = var,
+                      col = col,
+                      entry = entry,
                       title = title,
                       text = text,
                       plot_distinct = plot_distinct,

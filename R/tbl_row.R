@@ -1,5 +1,10 @@
-# S3 method to retrieve the number of rows
-
+#' S3 method to retrieve the number of rows
+#'
+#' @param con database connection obj or R table object
+#' @param schema database schema
+#' @param tbl database table
+#'
+#'
 tbl_row = function(...) {
   UseMethod('tbl_row')
 }
@@ -21,7 +26,7 @@ tbl_row.PostgreSQLConnection = tbl_row.SQLiteConnection
 # R object ----------------------------------------------------------------
 tbl_row.data.table = function(con,
                               ...) {
-  norw(con)
+  nrow(con)
 }
 
 tbl_row.data.frame = tbl_row.data.table

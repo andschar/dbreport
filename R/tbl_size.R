@@ -1,5 +1,9 @@
-# S3 method to retrieve size of table
-
+#' S3 method to retrieve size of table
+#'
+#' @param con database connection obj or R table object
+#' @param schema database schema
+#' @param tbl database table
+#'
 tbl_size = function(...) {
   UseMethod('tbl_size')
 }

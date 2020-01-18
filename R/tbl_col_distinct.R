@@ -1,5 +1,11 @@
-# S3 method to get distinct entries for every column
-
+#' S3 method to get distinct entries for every column
+#'
+#' @param con database connection obj or R table object
+#' @param schema database schema
+#' @param tbl database table
+#' @param col specific table column
+#' @param verbose verbose output
+#'  
 tbl_col_distinct = function(...) {
   UseMethod('tbl_col_distinct')
 }
@@ -7,13 +13,12 @@ tbl_col_distinct = function(...) {
 tbl_col_distinct.SQLiteConnection = function(con,
                                              schema = NULL,
                                              tbl = NULL,
-                                             cols = NULL,
-                                             limit = NULL,
+                                             col = NULL,
                                              verbose = FALSE) {
   
-  foo = function(con, schema, tbl, cols, limit) {
+  foo = function(con, schema, tbl, col) {
     q_l = list()
-    for (i in cols) {
+    for (i in col) {
       select = paste0("SELECT ", sql_quote(con, i), ", count(", sql_quote(con, i), ") AS n")
       if (is.null(schema)) {
         from = paste0("FROM ", tbl)
@@ -22,14 +27,10 @@ tbl_col_distinct.SQLiteConnection = function(con,
       }
       groupby = paste0("GROUP BY ", sql_quote(con, i))
       orderby = paste0("ORDER BY n DESC")
-      if (!is.null(limit) & is.numeric(limit)) {
-        limit = paste0("LIMIT ", as.integer(limit))
-      }
       q = trimws(paste(select,
                        from,
                        groupby,
                        orderby,
-                       limit,
                        sep = '\n'))
       q_l[[i]] = q
     }
@@ -39,8 +40,7 @@ tbl_col_distinct.SQLiteConnection = function(con,
   q_l = foo(con = con,
             schema = schema,
             tbl = tbl,
-            cols = cols,
-            limit = limit)
+            col = col)
   l = list()
   for (i in seq_along(q_l)) {
     q = q_l[[i]]

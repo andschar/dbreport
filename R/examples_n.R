@@ -1,5 +1,5 @@
-# function to retrieve examples
-
+#' function to transpose example columns
+#' 
 examples_n = function (l, n = 3) {
   l = lapply(lapply(l, `[[`, 1), head, 3)
   example = as.data.table(data.table::transpose(l), col.names = names(l[[1]]))

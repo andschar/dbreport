@@ -1,5 +1,9 @@
-# S3 method to retrieve the column types of a table
-
+#' S3 method to retrieve the column types of a table
+#'
+#' @param con database connection obj or R table object
+#' @param schema database schema
+#' @param tbl database table
+#'
 tbl_col_type = function(...) {
   UseMethod('tbl_col_type')
 }

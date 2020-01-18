@@ -1,15 +1,18 @@
-
+#' S3 method to get the amount of NULLs or NAs in each column
+#'
+#' @param con database connection obj or R table object
+#' @param schema database schema
+#' @param tbl database table
+#' @param col specific table column
+#'  
 tbl_col_null = function(...) {
   UseMethod('tbl_col_null')
 }
 
-#' helper funciton to query NULL entries for each column
-#' @param con
-#' @param schema
-#' @param tbl
-#' @param col
-#' 
-tbl_col_null.SQLiteConnection = function(con, schema = NULL, tbl = NULL, col = NULL) {
+tbl_col_null.SQLiteConnection = function(con,
+                                         schema = NULL,
+                                         tbl = NULL,
+                                         col = NULL) {
   
   foo = function(con, schema, tbl, col) {
     # checking

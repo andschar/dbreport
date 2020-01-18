@@ -1,5 +1,5 @@
-# S3 method to retrieve the number of rows
-
+#' S3 method to escape SQL variables accordingly
+#'
 sql_quote = function(...) {
   UseMethod('sql_quote')
 }

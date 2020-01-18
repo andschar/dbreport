@@ -1,0 +1,6 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+
+# self defined
+README.Rmd
+testing.R

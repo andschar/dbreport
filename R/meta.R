@@ -1,5 +1,5 @@
-#' function to retrieve meta data from databases R-objects or files
-#' @export
+#' function to retrieve meta data from databases or R-objects
+#'  
 #'
 meta = function(...) {
   UseMethod("meta")
@@ -43,7 +43,7 @@ meta.data.table = function(con = NULL,
                            ...) {
   out = data.table(object = deparse(substitute(con)),
                    `object type` = paste0(as.character(class(con)), collapse = ', '),
-                   `object rows` = nrow(con),
+                   `object rows` = tbl_row(con),
                    `object size` = paste0(tbl_size(con, schema, tbl), collapse = ' '),
                    output_dir = output_dir,
                    output_file = output_file)
@@ -54,17 +54,3 @@ meta.data.table = function(con = NULL,
 
 meta.data.frame = meta.data.table
 meta.tibble = meta.data.table
-
-# disk files --------------------------------------------------------------
-meta.character = function(con = NULL,
-                          output_dir = NULL,
-                          output_file = NULL,
-                          ...) {
-  out = data.table(file = file.path(con),
-                   `file size` = paste0(tbl_size(con, schema, tbl), collapse = ' '),
-                   output_dir = output_dir,
-                   output_file = output_file)
-  out = transpose(out, keep.names = 'variable')
-  setnames(out, c('variable', 'value'))
-  out
-}
