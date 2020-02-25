@@ -28,7 +28,8 @@ tbl_l = fetch(con = con,
               schema = schema,
               tbl = tbl,
               col = col,
-              entry = entry)
+              entry = entry,
+              verbose = verbose)
 meta_dt = meta(con = con,
                schema = schema,
                tbl = tbl,
@@ -74,6 +75,7 @@ if (plot_distinct) {
     col = names(tbl_l$distinct)[i]
     setDT(dat)
     dat[ , var20 := substr(get(col), 1, 20) ]
+    dat[ , n := as.integer(n) ] # NOTE to get rid of integer64, that might be returned - can be done more gracefully
     if (!is.null(plot_limit))
       dat = dat[1:plot_limit, ]
     # plots

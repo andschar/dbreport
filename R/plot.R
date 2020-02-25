@@ -6,7 +6,9 @@
 pl_gg = function(dat = NULL, col = NULL) {
   ggplot2::ggplot(dat, aes(x = reorder(var20, -n), y = n)) +
     ggplot2::geom_bar(stat = 'identity') +
-    ggplot2::geom_text(aes(label = n), position = position_dodge(width = 0.9), vjust = 0, hjust = 0, angle = 45) +
+    ggplot2::geom_text(aes(label = n),
+                       position = ggplot2::position_dodge(width = 0.9),
+                       vjust = 0, hjust = 0, angle = 45) +
     ggplot2::scale_y_continuous(expand = ggplot2::expand_scale(mult = c(0.05, 0.05))) +
     ggplot2::labs(title = col, subtitle = col, x = NULL) +
     ggplot2::theme_minimal() +

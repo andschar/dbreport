@@ -4,13 +4,26 @@
 \alias{dbreport}
 \title{Create reports of a table}
 \usage{
-dbreport(con = NULL, schema = NULL, tbl = NULL, col = NULL,
-  entry = NULL, title = "My report title", text = NULL,
-  plot_distinct = TRUE, plot_type = c("gg", "bp", "tree"),
-  plot_limit = 100L, output_dir = NULL, output_file = "report",
-  output_format = c("html_document", "html_vignette", "pdf_document",
-  "word_document"), file = TRUE, file_format = c("csv", "json"),
-  file_type = c("single", "multiple"), exit = TRUE, verbose = FALSE)
+dbreport(
+  con = NULL,
+  schema = NULL,
+  tbl = NULL,
+  col = NULL,
+  entry = NULL,
+  title = "My report title",
+  text = NULL,
+  plot_distinct = TRUE,
+  plot_type = c("gg", "bp", "tree"),
+  plot_limit = 100L,
+  output_dir = NULL,
+  output_file = "report",
+  output_format = c("html_document", "html_vignette", "pdf_document", "word_document"),
+  file = TRUE,
+  file_format = c("csv", "json"),
+  file_type = c("single", "multiple"),
+  exit = TRUE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{con}{Connection to data base, R-object (data.table, data.frame, tibble). Required.}

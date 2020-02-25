@@ -33,8 +33,7 @@ con = DBI::dbConnect(drv = RPostgres::Postgres(),
                      host = 'host',
                      port = 'port',
                      user = 'user',
-                     password = 'mysecretpassword',
-                     bigint = 'integer')
+                     password = 'mysecretpassword')
 ```
 
 Now we can create a report of any table therein. Let's just do this for the `information_schema.tables` table which is created by default for any Postgres or MySQL database. In doing so, we choose to provide an output directory (`output_dir = `), to provide a super meaningful title (`title = `) and to add some introductory text (`text = `) to the report. As our output format (`output_format = `) we choose `'html_document'`. We could also take other [rmarkdown formats](https://rmarkdown.rstudio.com/lesson-9.html), such as `'pdf_document'`, `'github_document'`, `'html_vignette'` (for a very lightweight output) etc.

@@ -79,6 +79,7 @@ dbreport = function(con = NULL,
   file_type = match.arg(file_type)
   # render
   fl = system.file('rmd', 'rmarkdown_template.Rmd', package = 'dbreport')
+  # browser() # debuging
   rmarkdown::render(fl,
                     output_format = output_format,
                     output_dir = output_dir,

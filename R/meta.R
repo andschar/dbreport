@@ -42,9 +42,9 @@ meta.data.table = function(con = NULL,
                            output_file = NULL,
                            ...) {
   out = data.table(object = deparse(substitute(con)),
-                   `object type` = paste0(as.character(class(con)), collapse = ', '),
-                   `object rows` = tbl_row(con),
-                   `object size` = paste0(tbl_size(con, schema, tbl), collapse = ' '),
+                   `table type` = paste0(as.character(class(con)), collapse = ', '),
+                   `table rows` = tbl_row(con),
+                   `table size` = paste0(tbl_size(con, schema, tbl), collapse = ' '),
                    output_dir = output_dir,
                    output_file = output_file)
   out = transpose(out, keep.names = 'variable')

@@ -16,7 +16,7 @@ tbl_row.SQLiteConnection = function(con,
                                     ...) {
   q = paste0("SELECT count(1) AS n_total
               FROM ", paste0(c(schema, tbl), collapse = '.'), ";")
-  unlist(DBI::dbGetQuery(con, q))
+  as.numeric(DBI::dbGetQuery(con, q)$n_total)
 }
 
 tbl_row.MySQLConnection = tbl_row.SQLiteConnection

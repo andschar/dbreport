@@ -4,8 +4,15 @@
 \alias{fetch}
 \title{function to retrieve data from databases or R-objects}
 \usage{
-fetch(con = NULL, schema = NULL, tbl = NULL, col = NULL,
-  entry = NULL, verbose = FALSE, ...)
+fetch(
+  con = NULL,
+  schema = NULL,
+  tbl = NULL,
+  col = NULL,
+  entry = NULL,
+  verbose = FALSE,
+  ...
+)
 }
 \arguments{
 \item{con}{Database connection obj or R table object}
