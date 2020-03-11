@@ -77,6 +77,8 @@ dbreport = function(con = NULL,
   output_format = match.arg(output_format, several.ok = TRUE)
   file_format = match.arg(file_format)
   file_type = match.arg(file_type)
+  # check db
+  tbl_exists(con = con, schema = schema, tbl = tbl)
   # render
   fl = system.file('rmd', 'rmarkdown_template.Rmd', package = 'dbreport')
   # browser() # debuging
