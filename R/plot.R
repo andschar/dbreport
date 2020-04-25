@@ -4,16 +4,18 @@
 #' @param col column
 #' 
 pl_gg = function(dat = NULL, col = NULL, x = NULL, y = NULL) {
+  # DEBUG dat = tbl_l$distinct$class[1:100L]; x = 'class'; y = 'n_distinct'; dat[ , n_distinct := as.integer(n_distinct) ]
   ggplot2::ggplot(dat, ggplot2::aes(x = reorder(get(x), -get(y)), y = get(y))) +
     ggplot2::geom_bar(stat = 'identity') +
     ggplot2::geom_text(ggplot2::aes(label = get(y)),
                        position = ggplot2::position_dodge(width = 0.9),
                        vjust = 0, hjust = 0, angle = 45) +
-    ggplot2::scale_y_continuous(expand = ggplot2::expansion(mult = c(0.05, 0.05))) +
-    ggplot2::labs(title = col,
-                  subtitle = col,
+    ggplot2::scale_y_continuous(expand = ggplot2::expansion(mult = c(0.05, 0.12))) +
+    ggplot2::scale_x_discrete(expand = ggplot2::expansion(mult = c(0.02, 0.05))) +
+    ggplot2::labs(# title = col,
+                  # subtitle = col,
                   x = NULL,
-                  y = y) +
+                  y = NULL) +
     ggplot2::theme_minimal() +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
 }

@@ -85,6 +85,15 @@ dbreport = function(con = NULL,
                     output_format = output_format,
                     output_dir = output_dir,
                     output_file = output_file,
+                    output_options = list(
+                      toc = TRUE,
+                      toc_depth = 3,  # upto three depths of headings (specified by #, ## and ###)
+                      number_sections = FALSE,  ## if you want number sections at each table header
+                      theme = 'united',  # many options for theme, this one is my favorite.
+                      highlight = 'tango'  # specifies the syntax highlighting style
+                      # css: my.css   # you can add your custom css, should be in same folder
+                      # taken from: https://stackoverflow.com/questions/23957278
+                    ),
                     params = list(
                       con = con,
                       schema = schema,
