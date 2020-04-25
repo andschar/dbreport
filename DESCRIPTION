@@ -5,7 +5,7 @@ Description: dbreport allows you to create automated reports from data base tabl
     The reports sum up most important informations of tables (i.e. how many NULLs a column has
     or counts distinct entries) and returns them as a .html, .pdf, or .doc file.
 Type: Package
-Version: 0.0.0.9004
+Version: 0.0.0.9005
 Date: 2019-09-12
 License: MIT + file LICENSE
 Encoding: UTF-8

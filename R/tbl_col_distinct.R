@@ -19,14 +19,14 @@ tbl_col_distinct.SQLiteConnection = function(con,
   foo = function(con, schema, tbl, col) {
     q_l = list()
     for (i in col) {
-      select = paste0("SELECT ", sql_quote(con, i), ", count(", sql_quote(con, i), ") AS n")
+      select = paste0("SELECT ", sql_quote(con, i), ", count(*) AS n_distinct") # DROPS NULLs: count(", sql_quote(con, i), ")
       if (is.null(schema)) {
         from = paste0("FROM ", tbl)
       } else {
         from = paste0("FROM ", schema, ".", tbl)
       }
       groupby = paste0("GROUP BY ", sql_quote(con, i))
-      orderby = paste0("ORDER BY n DESC")
+      orderby = paste0("ORDER BY 2 DESC") # NOTE ORDER BY INDEX b/c when column is named n "ORDER BY n" errors
       q = trimws(paste(select,
                        from,
                        groupby,
@@ -72,7 +72,7 @@ tbl_col_distinct.data.table = function(con,
   setDT(con)
   l = list()
   for (i in names(con)) {
-    dt = con[ , .(n = .N), i ][ order(-n) ]
+    dt = con[ , .(n_distinct = .N), i ][ order(-n_distinct) ]
     l[[i]] = dt
   }
   distinct_n = lapply(con, uniqueN)

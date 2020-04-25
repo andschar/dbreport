@@ -3,14 +3,17 @@
 #' @param dat data.table object
 #' @param col column
 #' 
-pl_gg = function(dat = NULL, col = NULL) {
-  ggplot2::ggplot(dat, ggplot2::aes(x = reorder(var20, -n), y = n)) +
+pl_gg = function(dat = NULL, col = NULL, x = NULL, y = NULL) {
+  ggplot2::ggplot(dat, ggplot2::aes(x = reorder(get(x), -get(y)), y = get(y))) +
     ggplot2::geom_bar(stat = 'identity') +
-    ggplot2::geom_text(ggplot2::aes(label = n),
+    ggplot2::geom_text(ggplot2::aes(label = get(y)),
                        position = ggplot2::position_dodge(width = 0.9),
                        vjust = 0, hjust = 0, angle = 45) +
     ggplot2::scale_y_continuous(expand = ggplot2::expansion(mult = c(0.05, 0.05))) +
-    ggplot2::labs(title = col, subtitle = col, x = NULL) +
+    ggplot2::labs(title = col,
+                  subtitle = col,
+                  x = NULL,
+                  y = y) +
     ggplot2::theme_minimal() +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
 }
@@ -19,8 +22,8 @@ pl_gg = function(dat = NULL, col = NULL) {
 #' @param dat data.table object 
 #'
 # https://stackoverflow.com/questions/29583849/save-a-plot-in-an-object
-plotit = function(dat, col){
-  barplot(dat$n ~ reorder(dat$var20, -n),
+plotit = function(dat = NULL, col = NULL, x = NULL, y = NULL){
+  barplot(y ~ reorder(x, -y),
           data = dat,
           ylab = 'n',
           xlab = NA,
@@ -30,7 +33,7 @@ plotit = function(dat, col){
 #' 
 #' @param dat data.table object 
 #'
-pl_bp = function(dat = dat) { plotit(dat) }
+pl_bp = function(dat = dat, col = col, x = x, y = y) { plotit(dat, col, x, y) }
 #' Plots a treemap()
 #' 
 #' @param dat data.table object

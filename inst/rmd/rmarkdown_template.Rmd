@@ -75,16 +75,16 @@ if (plot_distinct) {
     col = names(tbl_l$distinct)[i]
     setDT(dat)
     dat[ , var20 := substr(get(col), 1, 20) ]
-    dat[ , n := as.integer(n) ] # NOTE to get rid of integer64, that might be returned - can be done more gracefully
+    dat[ , n_distinct := as.integer(n_distinct) ] # NOTE to get rid of integer64, that might be returned - can be done more gracefully
     if (!is.null(plot_limit))
       dat = dat[1:plot_limit, ]
     # plots
     if (plot_type == 'gg')
-      print(pl_gg(dat = dat, col = col))
+      print(pl_gg(dat = dat, col = col, x = 'var20', y = 'n_distinct'))
     if (plot_type == 'bp')
-      pl_bp(dat = dat)
+      pl_bp(dat = dat, col = col, x = dat$var20, y = dat$n_distinct)
     if (plot_type == 'tree')
-      pl_tree(dat = dat, index = col, vsize = 'n')
+      pl_tree(dat = dat, index = 'n_distinct', vsize = 'n_distinct')
   }
 } else {
   print('Plots should not be printed.')
