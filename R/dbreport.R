@@ -81,7 +81,6 @@ dbreport = function(con = NULL,
   tbl_exists(con = con, schema = schema, tbl = tbl)
   # render
   fl = system.file('rmd', 'rmarkdown_template.Rmd', package = 'dbreport')
-  # browser() # debuging
   rmarkdown::render(fl,
                     output_format = output_format,
                     output_dir = output_dir,

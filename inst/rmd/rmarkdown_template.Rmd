@@ -37,7 +37,7 @@ meta_dt = meta(con = con,
                output_file = output_file)
 ```
 
-```{r cars, echo=FALSE, results='asis'}
+```{r text, echo=FALSE, results='asis'}
 if (!is.null(text)) {
   if (file.exists(text)) {
     readLines(text)

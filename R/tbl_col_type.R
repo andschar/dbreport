@@ -24,7 +24,7 @@ tbl_col_type.PqConnection = function(con,
                                      schema,
                                      tbl,
                                      ...) {
-  q1 = paste0("SELECT COLUMN_NAME AS cols, DATA_TYPE AS type
+  q1 = paste0("SELECT column_name AS cols, data_type AS type
                FROM information_schema.columns
                WHERE TABLE_NAME = '", tbl, "' AND TABLE_SCHEMA = '", schema, "';")
   data.table(DBI::dbGetQuery(con, q1))
@@ -36,7 +36,7 @@ tbl_col_type.MySQLConnection = function(con,
                                         schema,
                                         tbl,
                                         ...) {
-  q1 = paste0("SELECT COLUMN_NAME, DATA_TYPE
+  q1 = paste0("SELECT column_name, data_type
                FROM information_schema.columns
                WHERE TABLE_NAME = '", tbl, "' AND TABLE_SCHEMA = '", schema, "';")
   type = data.table(DBI::dbGetQuery(con, q1))
