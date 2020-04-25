@@ -4,7 +4,7 @@
 \alias{pl_gg}
 \title{Plots a ggplot()}
 \usage{
-pl_gg(dat = NULL, col = NULL)
+pl_gg(dat = NULL, col = NULL, x = NULL, y = NULL)
 }
 \arguments{
 \item{dat}{data.table object}

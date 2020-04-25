@@ -4,7 +4,7 @@
 \alias{plotit}
 \title{Plots a barplot()}
 \usage{
-plotit(dat, col)
+plotit(dat = NULL, col = NULL, x = NULL, y = NULL)
 }
 \arguments{
 \item{dat}{data.table object}

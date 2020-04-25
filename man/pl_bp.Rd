@@ -4,7 +4,7 @@
 \alias{pl_bp}
 \title{plots a barplot()}
 \usage{
-pl_bp(dat = dat)
+pl_bp(dat = dat, col = col, x = x, y = y)
 }
 \arguments{
 \item{dat}{data.table object}
