@@ -4,3 +4,6 @@
 # self defined
 README.Rmd
 testing.R
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
