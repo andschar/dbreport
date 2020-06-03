@@ -13,7 +13,7 @@ dbreport(
   title = "My report title",
   text = NULL,
   plot_distinct = TRUE,
-  plot_type = c("gg", "bp", "tree"),
+  plot_type = c("lollipop", "treemap"),
   plot_limit = 100L,
   output_dir = NULL,
   output_file = "report",
@@ -42,7 +42,7 @@ dbreport(
 
 \item{plot_distinct}{Include plots of ordered distinct counts of each column in summary report.}
 
-\item{plot_type}{Should a ggplot(), a barplot() or a treemap::treemap() be produced?}
+\item{plot_type}{Should a lollipop or a treemap plot be produced?}
 
 \item{plot_limit}{Limit distinct count axis in the plots. Default: 100L. Should be set to a reasonable size.}
 
@@ -73,7 +73,7 @@ Create reports from data base tables, R table objects (data.table, data.frame, t
 # creates a .html, .pdf, .doc via Rmarkdown
 dbreport(con = iris,
          plot_distinct = TRUE,
-         plot_type = 'tree', # Instead of a ggplot() you can also create a barplot() or a treemap() output
+         plot_type = 'lollipop',
          plot_limit = 10, # Limit your plot to the first 15 entries
          output_dir = file.path(tempdir(), 'iris'),
          output_file = 'test',

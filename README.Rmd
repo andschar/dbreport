@@ -55,7 +55,7 @@ the output directory and we can examine it.
 
 ### Specific columns
 
-We can also tweek our report a little more and choose only specific columns (`col = `) to be included in the report and to use the [treemap](https://github.com/mtennekes/treemap) instead of the [ggplot2](https://github.com/tidyverse/ggplot2) package for ploting (`plot_type = `). For this we access the publicly avaible Read-Only [MySQL](https://www.mysql.com) [RNA-sequence database](https://docs.rfam.org/en/latest/database.html) and run `dbreport()` only on the _ncbi_id_ and _species_ column of the _taxonomy_ table. In doing so we also output the report to a .pdf (`output_format = `).
+We can also tweek our report a little more and choose only specific columns (`col = `) to be included in the report and create treemap plot instead of the lollipop plot (`plot_type = `). For this we access the publicly avaible Read-Only [MySQL](https://www.mysql.com) [RNA-sequence database](https://docs.rfam.org/en/latest/database.html) and run `dbreport()` only on the _ncbi_id_ and _species_ column of the _taxonomy_ table. In doing so we also output the report to a .pdf (`output_format = `).
 
 ```{r eval=FALSE}
 con = DBI::dbConnect(drv = RMySQL::MySQL(),
@@ -70,7 +70,7 @@ dbreport(con,
          schema = 'Rfam',
          tbl = 'taxonomy',
          col = c('ncbi_id', 'species'),
-         plot_type = 'tree',
+         plot_type = 'treemap',
          output_dir = file.path(tempdir(), 'test_mysql'),
          output_format = 'pdf_document')
 ```
