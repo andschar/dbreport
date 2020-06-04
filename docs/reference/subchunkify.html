@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>function to retrieve meta data from databases or R-objects — meta • dbreport</title>
+<title>Create sub-chunks for plots — subchunkify • dbreport</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="function to retrieve meta data from databases or R-objects — meta" />
-<meta property="og:description" content="function to retrieve meta data from databases or R-objects" />
+<meta property="og:title" content="Create sub-chunks for plots — subchunkify" />
+<meta property="og:description" content="Create sub-chunks for plots" />
 
 
 
@@ -108,17 +108,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>function to retrieve meta data from databases or R-objects</h1>
-    <small class="dont-index">Source: <a href='https://github.com/andschar/dbreport/blob/master/R/meta.R'><code>R/meta.R</code></a></small>
-    <div class="hidden name"><code>meta.Rd</code></div>
+    <h1>Create sub-chunks for plots</h1>
+    <small class="dont-index">Source: <a href='https://github.com/andschar/dbreport/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>subchunkify.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>function to retrieve meta data from databases or R-objects</p>
+    <p>Create sub-chunks for plots</p>
     </div>
 
-    <pre class="usage"><span class='fu'>meta</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>subchunkify</span>(<span class='no'>pl</span>, <span class='kw'>fig.height</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>fig.width</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>chunk_name</span> <span class='kw'>=</span> <span class='st'>"plot"</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>pl</th>
+      <td><p>a plot object</p></td>
+    </tr>
+    <tr>
+      <th>fig.height</th>
+      <td><p>figure height</p></td>
+    </tr>
+    <tr>
+      <th>fig.width</th>
+      <td><p>figure width</p></td>
+    </tr>
+    <tr>
+      <th>chunk_name</th>
+      <td><p>name of the chunk</p></td>
+    </tr>
+    </table>
 
 
   </div>

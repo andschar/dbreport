@@ -38,8 +38,7 @@ con = DBI::dbConnect(drv = RPostgres::Postgres(),
                      host = 'host',
                      port = 'port',
                      user = 'user',
-                     password = 'mysecretpassword',
-                     bigint = 'integer')
+                     password = 'mysecretpassword')
 ```
 
 Now we can create a report of any table therein. Let’s just do this for
@@ -71,11 +70,9 @@ columns is created in the output directory and we can examine it.
 ### Specific columns
 
 We can also tweek our report a little more and choose only specific
-columns (`col =`) to be included in the report and to use the
-[treemap](https://github.com/mtennekes/treemap) instead of the
-[ggplot2](https://github.com/tidyverse/ggplot2) package for ploting
-(`plot_type =`). For this we access the publicly avaible Read-Only
-[MySQL](https://www.mysql.com) [RNA-sequence
+columns (`col =`) to be included in the report and create treemap plot
+instead of the lollipop plot (`plot_type =`). For this we access the
+publicly avaible Read-Only [MySQL](https://www.mysql.com) [RNA-sequence
 database](https://docs.rfam.org/en/latest/database.html) and run
 `dbreport()` only on the *ncbi\_id* and *species* column of the
 *taxonomy* table. In doing so we also output the report to a .pdf
@@ -94,7 +91,7 @@ dbreport(con,
          schema = 'Rfam',
          tbl = 'taxonomy',
          col = c('ncbi_id', 'species'),
-         plot_type = 'tree',
+         plot_type = 'treemap',
          output_dir = file.path(tempdir(), 'test_mysql'),
          output_format = 'pdf_document')
 ```

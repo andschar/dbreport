@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbreport</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9008</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9010</span>
       </span>
     </div>
 
@@ -126,8 +126,8 @@
   <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"My report title"</span>,
   <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>plot_distinct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>plot_type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"gg"</span>, <span class='st'>"bp"</span>, <span class='st'>"tree"</span>),
-  <span class='kw'>plot_limit</span> <span class='kw'>=</span> <span class='fl'>100L</span>,
+  <span class='kw'>plot_type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lollipop"</span>, <span class='st'>"bar_horiz"</span>, <span class='st'>"treemap"</span>),
+  <span class='kw'>plot_limit</span> <span class='kw'>=</span> <span class='fl'>40L</span>,
   <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>output_file</span> <span class='kw'>=</span> <span class='st'>"report"</span>,
   <span class='kw'>output_format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"html_document"</span>, <span class='st'>"html_vignette"</span>, <span class='st'>"pdf_document"</span>, <span class='st'>"word_document"</span>),
@@ -175,7 +175,7 @@
     </tr>
     <tr>
       <th>plot_type</th>
-      <td><p>Should a ggplot(), a barplot() or a treemap::treemap() be produced?</p></td>
+      <td><p>Should a lollipop or a treemap plot be produced?</p></td>
     </tr>
     <tr>
       <th>plot_limit</th>
@@ -224,7 +224,7 @@
 <span class='co'># creates a .html, .pdf, .doc via Rmarkdown</span>
 <span class='fu'>dbreport</span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='no'>iris</span>,
          <span class='kw'>plot_distinct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-         <span class='kw'>plot_type</span> <span class='kw'>=</span> <span class='st'>'tree'</span>, <span class='co'># Instead of a ggplot() you can also create a barplot() or a treemap() output</span>
+         <span class='kw'>plot_type</span> <span class='kw'>=</span> <span class='st'>'lollipop'</span>,
          <span class='kw'>plot_limit</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='co'># Limit your plot to the first 15 entries</span>
          <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>(), <span class='st'>'iris'</span>),
          <span class='kw'>output_file</span> <span class='kw'>=</span> <span class='st'>'test'</span>,
@@ -234,49 +234,49 @@
          <span class='kw'>file_type</span> <span class='kw'>=</span> <span class='st'>'multiple'</span>,
          <span class='kw'>file_format</span> <span class='kw'>=</span> <span class='st'>'csv'</span>)</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>processing file: rmarkdown_template.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |......                                                                |   8%
+#&gt; <span class='message'>processing file: rmarkdown_template.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |.....                                                                 |   7%
 #&gt;    inline R code fragments
 #&gt; 
-#&gt;   |                                                                              |............                                                          |  17%
+#&gt;   |                                                                              |..........                                                            |  14%
 #&gt; label: data (with options) 
 #&gt; List of 3
 #&gt;  $ echo   : logi FALSE
 #&gt;  $ message: logi FALSE
 #&gt;  $ warning: logi FALSE
 #&gt; 
-#&gt;   |                                                                              |..................                                                    |  25%
+#&gt;   |                                                                              |...............                                                       |  21%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                              |.......................                                               |  33%
+#&gt;   |                                                                              |....................                                                  |  29%
 #&gt; label: text (with options) 
 #&gt; List of 2
 #&gt;  $ echo   : logi FALSE
 #&gt;  $ results: chr "asis"
 #&gt; 
-#&gt;   |                                                                              |.............................                                         |  42%
+#&gt;   |                                                                              |.........................                                             |  36%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                              |...................................                                   |  50%
+#&gt;   |                                                                              |..............................                                        |  43%
 #&gt; label: meta (with options) 
 #&gt; List of 3
 #&gt;  $ echo   : logi FALSE
 #&gt;  $ message: logi FALSE
 #&gt;  $ warning: logi FALSE
 #&gt; 
-#&gt;   |                                                                              |.........................................                             |  58%
+#&gt;   |                                                                              |...................................                                   |  50%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                              |...............................................                       |  67%
+#&gt;   |                                                                              |........................................                              |  57%
 #&gt; label: table (with options) 
 #&gt; List of 3
 #&gt;  $ echo   : logi FALSE
 #&gt;  $ message: logi FALSE
 #&gt;  $ warning: logi FALSE
 #&gt; 
-#&gt;   |                                                                              |....................................................                  |  75%
+#&gt;   |                                                                              |.............................................                         |  64%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt;   |                                                                              |..........................................................            |  83%
+#&gt;   |                                                                              |..................................................                    |  71%
 #&gt; label: plot (with options) 
 #&gt; List of 7
 #&gt;  $ echo      : logi FALSE
@@ -286,7 +286,21 @@
 #&gt;  $ message   : logi FALSE
 #&gt;  $ warning   : logi FALSE
 #&gt;  $ results   : chr "asis"
-#&gt; </div><div class='output co'>#&gt;   |                                                                              |................................................................      |  92%
+#&gt; </div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 7 rows containing missing values (geom_segment).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 7 rows containing missing values (geom_point).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 7 rows containing missing values (geom_text).</span></div><div class='output co'>#&gt;   |                                                                              |.......................................................               |  79%
+#&gt;   ordinary text without R code
+#&gt; 
+#&gt;   |                                                                              |............................................................          |  86%
+#&gt; label: plot-OLD (with options) 
+#&gt; List of 7
+#&gt;  $ echo      : logi FALSE
+#&gt;  $ fig.height: num 7
+#&gt;  $ fig.width : num 15
+#&gt;  $ dpi       : num 72
+#&gt;  $ message   : logi FALSE
+#&gt;  $ warning   : logi FALSE
+#&gt;  $ results   : chr "asis"
+#&gt; 
+#&gt;   |                                                                              |.................................................................     |  93%
 #&gt;   ordinary text without R code
 #&gt; 
 #&gt;   |                                                                              |......................................................................| 100%
@@ -296,8 +310,8 @@
 #&gt;  $ message: logi FALSE
 #&gt;  $ warning: logi FALSE
 #&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: rmarkdown_template.knit.md</span></div><div class='output co'>#&gt; /usr/lib/rstudio/bin/pandoc/pandoc +RTS -K512m -RTS rmarkdown_template.utf8.md --to latex --from markdown+autolink_bare_uris+tex_math_single_backslash --output /tmp/RtmpncB5VV/iris/test.tex --self-contained --table-of-contents --toc-depth 3 --highlight-style tango --pdf-engine pdflatex --variable graphics --lua-filter /home/scharmueller/R/x86_64-pc-linux-gnu-library/3.6/rmarkdown/rmd/lua/pagebreak.lua --lua-filter /home/scharmueller/R/x86_64-pc-linux-gnu-library/3.6/rmarkdown/rmd/lua/latex-div.lua --variable 'geometry:margin=1in' </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Output created: /tmp/RtmpncB5VV/iris/test.pdf</span></div><div class='input'># }
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: rmarkdown_template.knit.md</span></div><div class='output co'>#&gt; /usr/lib/rstudio/bin/pandoc/pandoc +RTS -K512m -RTS rmarkdown_template.utf8.md --to latex --from markdown+autolink_bare_uris+tex_math_single_backslash --output /tmp/RtmpZihX1f/iris/test.tex --self-contained --table-of-contents --toc-depth 3 --highlight-style tango --pdf-engine pdflatex --variable graphics --lua-filter /home/scharmueller/R/x86_64-pc-linux-gnu-library/3.6/rmarkdown/rmd/lua/pagebreak.lua --lua-filter /home/scharmueller/R/x86_64-pc-linux-gnu-library/3.6/rmarkdown/rmd/lua/latex-div.lua --variable 'geometry:margin=1in' </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: /tmp/RtmpZihX1f/iris/test.pdf</span></div><div class='input'># }
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

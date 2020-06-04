@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">dbreport</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9008</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9010</span>
       </span>
     </div>
 
@@ -93,8 +93,7 @@
                      <span class="kw">host</span> <span class="kw">=</span> <span class="st">'host'</span>,
                      <span class="kw">port</span> <span class="kw">=</span> <span class="st">'port'</span>,
                      <span class="kw">user</span> <span class="kw">=</span> <span class="st">'user'</span>,
-                     <span class="kw">password</span> <span class="kw">=</span> <span class="st">'mysecretpassword'</span>,
-                     <span class="kw">bigint</span> <span class="kw">=</span> <span class="st">'integer'</span>)</pre></div>
+                     <span class="kw">password</span> <span class="kw">=</span> <span class="st">'mysecretpassword'</span>)</pre></div>
 <p>Now we can create a report of any table therein. Let’s just do this for the <code>information_schema.tables</code> table which is created by default for any Postgres or MySQL database. In doing so, we choose to provide an output directory (<code>output_dir =</code>), to provide a super meaningful title (<code>title =</code>) and to add some introductory text (<code>text =</code>) to the report. As our output format (<code>output_format =</code>) we choose <code>'html_document'</code>. We could also take other <a href="https://rmarkdown.rstudio.com/lesson-9.html">rmarkdown formats</a>, such as <code>'pdf_document'</code>, <code>'github_document'</code>, <code>'html_vignette'</code> (for a very lightweight output) etc.</p>
 <div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="reference/dbreport.html">dbreport</a></span>(<span class="kw">con</span> <span class="kw">=</span> <span class="no">con</span>,
          <span class="kw">schema</span> <span class="kw">=</span> <span class="st">'information_schema'</span>,
@@ -111,7 +110,7 @@
 <div id="specific-columns" class="section level3">
 <h3 class="hasAnchor">
 <a href="#specific-columns" class="anchor"></a>Specific columns</h3>
-<p>We can also tweek our report a little more and choose only specific columns (<code>col =</code>) to be included in the report and to use the <a href="https://github.com/mtennekes/treemap">treemap</a> instead of the <a href="https://github.com/tidyverse/ggplot2">ggplot2</a> package for ploting (<code>plot_type =</code>). For this we access the publicly avaible Read-Only <a href="https://www.mysql.com">MySQL</a> <a href="https://docs.rfam.org/en/latest/database.html">RNA-sequence database</a> and run <code><a href="reference/dbreport.html">dbreport()</a></code> only on the <em>ncbi_id</em> and <em>species</em> column of the <em>taxonomy</em> table. In doing so we also output the report to a .pdf (<code>output_format =</code>).</p>
+<p>We can also tweek our report a little more and choose only specific columns (<code>col =</code>) to be included in the report and create treemap plot instead of the lollipop plot (<code>plot_type =</code>). For this we access the publicly avaible Read-Only <a href="https://www.mysql.com">MySQL</a> <a href="https://docs.rfam.org/en/latest/database.html">RNA-sequence database</a> and run <code><a href="reference/dbreport.html">dbreport()</a></code> only on the <em>ncbi_id</em> and <em>species</em> column of the <em>taxonomy</em> table. In doing so we also output the report to a .pdf (<code>output_format =</code>).</p>
 <div class="sourceCode" id="cb5"><pre class="r"><span class="no">con</span> <span class="kw">=</span> <span class="kw pkg">DBI</span><span class="kw ns">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span>(<span class="kw">drv</span> <span class="kw">=</span> <span class="kw pkg">RMySQL</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/RMySQL/man/MySQLDriver-class.html">MySQL</a></span>(),
                      <span class="kw">host</span> <span class="kw">=</span> <span class="st">'mysql-rfam-public.ebi.ac.uk'</span>,
                      <span class="kw">user</span> <span class="kw">=</span> <span class="st">'rfamro'</span>,
@@ -121,7 +120,7 @@
          <span class="kw">schema</span> <span class="kw">=</span> <span class="st">'Rfam'</span>,
          <span class="kw">tbl</span> <span class="kw">=</span> <span class="st">'taxonomy'</span>,
          <span class="kw">col</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'ncbi_id'</span>, <span class="st">'species'</span>),
-         <span class="kw">plot_type</span> <span class="kw">=</span> <span class="st">'tree'</span>,
+         <span class="kw">plot_type</span> <span class="kw">=</span> <span class="st">'treemap'</span>,
          <span class="kw">output_dir</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span>(), <span class="st">'test_mysql'</span>),
          <span class="kw">output_format</span> <span class="kw">=</span> <span class="st">'pdf_document'</span>)</pre></div>
 <p>By default <code><a href="reference/dbreport.html">dbreport()</a></code> closes the connection to a database and you would have to reopen it for every new report you want to create. You can turn off this behavior by setting <code>exit = FALSE</code>. This can be especially useful if you want to create reports for multiple tables automatically, for instance by using <code><a href="https://rdrr.io/r/base/mapply.html">mapply()</a></code>. After having created the reports however, you should run <code><a href="https://dbi.r-dbi.org/reference/dbDisconnect.html">DBI::dbDisconnect(con)</a></code> to close the open database connections.</p>
