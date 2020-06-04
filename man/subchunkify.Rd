@@ -18,3 +18,6 @@ subchunkify(pl, fig.height = 7, fig.width = 5, chunk_name = "plot")
 \description{
 Create sub-chunks for plots
 }
+\author{
+Andreas Scharmueller \email{andschar@protonmail.com}
+}

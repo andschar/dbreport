@@ -36,3 +36,28 @@ subchunkify = function(pl,
     quiet = TRUE
   ))
 }
+
+#' Shorten string
+#'
+#' @param x string
+#' @param limit integer; number of characters to limit string to
+#'
+#' @return a string
+#'
+#' @author Andreas Scharmueller \email{andschar@@protonmail.com}
+#'
+str_limit = function(x, limit = 20L) {
+  if (is.null(limit)) {
+    return(x)
+  }
+  if (limit <= 10) {
+    stop('Limit has to be greater than 10.')
+  }
+  ifelse(
+    nchar(x) > limit, 
+    paste0(substr(x, 1, limit - 5),
+           '..',
+           substr(x, nchar(x) - 2, nchar(x))),
+    x
+  )
+}

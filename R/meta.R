@@ -11,6 +11,7 @@ meta.SQLiteConnection = function(con = NULL,
                                  tbl = NULL,
                                  plot_type = NULL,
                                  plot_limit = NULL,
+                                 plot_limit_text = NULL,
                                  output_dir = NULL,
                                  output_file = NULL,
                                  ...) {
@@ -28,6 +29,7 @@ meta.SQLiteConnection = function(con = NULL,
                    `table size` = paste0(tbl_size(con = con, schema = schema, tbl = tbl), collapse = ' '),
                    plot_type = plot_type,
                    plot_limit = plot_limit,
+                   plot_limit_text = plot_limit_text,
                    output_dir = output_dir,
                    output_file = output_file)
   
@@ -44,6 +46,7 @@ meta.PostgreSQLConnection = meta.SQLiteConnection
 meta.data.table = function(con = NULL,
                            plot_type = NULL,
                            plot_limit = NULL,
+                           plot_limit_text = NULL,
                            output_dir = NULL,
                            output_file = NULL,
                            ...) {
@@ -53,6 +56,7 @@ meta.data.table = function(con = NULL,
                    `table size` = paste0(tbl_size(con, schema, tbl), collapse = ' '),
                    plot_type = plot_type,
                    plot_limit = plot_limit,
+                   plot_limit_text = plot_limit_text,
                    output_dir = output_dir,
                    output_file = output_file)
   out = transpose(out, keep.names = 'variable')

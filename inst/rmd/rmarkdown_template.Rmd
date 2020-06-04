@@ -5,11 +5,12 @@ params:
   con: NULL
   schema: NULL
   tbl: NULL
-  title: 'My report title'
-  text: NULL
+  title: 'My report title' # i.e. report_title
+  report_text: NULL
   plot_distinct: TRUE
   plot_type: 'lollipop'
   plot_limit: 40L
+  plot_limit_text: 20L
   out: TRUE
   col: NULL
   entry: NULL
@@ -35,16 +36,17 @@ meta_dt = meta(con = con,
                tbl = tbl,
                plot_type = plot_type,
                plot_limit = plot_limit,
+               plot_limit_text = plot_limit_text,
                output_dir = output_dir,
                output_file = output_file)
 ```
 
 ```{r text, echo=FALSE, results='asis'}
-if (!is.null(text)) {
-  if (file.exists(text)) {
-    readLines(text)
+if (!is.null(report_text)) {
+  if (file.exists(report_text)) {
+    readLines(report_text)
   } else {
-    cat(text)
+    cat(report_text)
   }
 }
 ```
@@ -73,7 +75,7 @@ if (plot_distinct) {
     dat = tbl_l$distinct[[i]]
     col = names(tbl_l$distinct)[i]
     setDT(dat)
-    dat[ , var20 := substr(get(col), 1, 20) ]
+    dat[ , var20 := as.character(str_limit(get(col), plot_limit_text)) ]
     dat[ , n_distinct := as.integer(n_distinct) ] # NOTE to get rid of integer64, that might be returned - can be done more gracefully
     if (!is.null(plot_limit))
       dat = dat[1:plot_limit, ]

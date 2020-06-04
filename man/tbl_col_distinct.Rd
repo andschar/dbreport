@@ -20,3 +20,6 @@ tbl_col_distinct(...)
 \description{
 S3 method to get distinct entries for every column
 }
+\author{
+Andreas Scharmueller, \email{andschar@protonmail.com}
+}

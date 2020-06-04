@@ -45,9 +45,9 @@ Now we can create a report of any table therein. Let’s just do this for
 the `information_schema.tables` table which is created by default for
 any Postgres or MySQL database. In doing so, we choose to provide an
 output directory (`output_dir =`), to provide a super meaningful title
-(`title =`) and to add some introductory text (`text =`) to the report.
-As our output format (`output_format =`) we choose `'html_document'`. We
-could also take other [rmarkdown
+(`report_title =`) and to add some introductory text (`report_text =`)
+to the report. As our output format (`output_format =`) we choose
+`'html_document'`. We could also take other [rmarkdown
 formats](https://rmarkdown.rstudio.com/lesson-9.html), such as
 `'pdf_document'`, `'github_document'`, `'html_vignette'` (for a very
 lightweight output) etc.
@@ -57,8 +57,8 @@ dbreport(con = con,
          schema = 'information_schema',
          tbl = 'tables',
          output_dir = '/home/user/project1',
-         title = 'Why not create an information_schem.tables report?!',
-         text = 'Introductory text.', # you can alsp provide a file
+         report_title = 'Why not create an information_schem.tables report?!',
+         report_text = 'Introductory text.', # you can alsp provide a file
          output_format = 'html_document')
 ```
 
@@ -126,5 +126,5 @@ dbreport(con = iris,
          entry = 'versicolor',
          output_dir = file.path(tempdir(), 'report_iris'),
          output_format = 'html_vignette',
-         title = 'Iris report')
+         report_title = 'Iris report')
 ```

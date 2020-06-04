@@ -5,22 +5,23 @@
 #' @import data.table rmarkdown knitr ggplot2 treemap
 #'
 #' @param con Connection to data base or an R-object (data.table, data.frame, tibble). Required.
-#' @param schema Data base schema (if applicable).
-#' @param tbl Table to be used for summary report (if applicable).
-#' @param col Table columns that should be summarised in report.
-#' @param entry Specific table entries which should be comsidered in the summary table.
-#' @param title Title of summary report.
-#' @param text User defined text input to add some description to the report. Default NULL - no text. Can be a character vector or a file.
-#' @param plot_distinct Include plots of ordered distinct counts of each column entryin the report?
-#' @param plot_type Should a lollipop, barplot or treemap plot be produced?
-#' @param plot_limit Limit distinct count axis in the plots. Default: 40L.
-#' @param output_dir To which directory should the output be saved?
-#' @param output_file File name of the report.
-#' @param output_format Which markdown output_format should be used for rendering the summary report? E.g. html_document, html_vignette, pdf_document, ...
-#' @param file Should one or multiple files for each distinct column counts be created?
-#' @param file_format To which format should the file(s) be put out (csv, json). Multiple possible.
-#' @param file_type Output each column distinct counts set to a single or to multiple files.
-#' @param exit logical. Should database connections be closed after runing dbreport(). Default: TRUE.
+#' @param schema character; Data base schema (if applicable).
+#' @param tbl character; Table to be used for summary report (if applicable).
+#' @param col character; Table columns that should be summarised in report.
+#' @param entry any; Specific table entries which should be comsidered in the summary table.
+#' @param report_title character; Title of summary report.
+#' @param report_text character or connection; User defined text input to add some description to the report. Default NULL - no text. Can be a character vector or a file.
+#' @param plot_distinct logical; Include plots of ordered distinct counts of each column entryin the report?
+#' @param plot_type character; Should a lollipop, barplot or treemap plot be produced?
+#' @param plot_limit integer; Limit distinct count axis in the plots. Default: 40L.
+#' @param plot_limit_text integer; Limit axis text to a certain length. Default: NULL (i.e. no limit is applied).
+#' @param output_dir character; To which directory should the output be saved?
+#' @param output_file character; File name of the report.
+#' @param output_format character; Which markdown output_format should be used for rendering the summary report? E.g. html_document, html_vignette, pdf_document, ...
+#' @param file logical; Should one or multiple files for each distinct column counts be created?
+#' @param file_format character; To which format should the file(s) be put out (csv, json). Multiple possible.
+#' @param file_type character; Output each column distinct counts set to a single or to multiple files.
+#' @param exit logical; Should database connections be closed after runing dbreport(). Default: TRUE.
 #' @param verbose TODO
 #' 
 #' @return The function creates a markdown report and exports files 
@@ -32,13 +33,14 @@
 #' # creates a .html, .pdf, .doc via Rmarkdown
 #' dbreport(
 #'   con = iris,
+#'   report_title = 'My iris report',
+#'   report_text = 'Here goes my text as an inrtoducion to the report.'
 #'   plot_distinct = TRUE,
 #'   plot_type = 'lollipop',
 #'   plot_limit = 10, # Limit your plot to the first 15 entries
 #'   output_dir = file.path(tempdir(), 'iris'),
 #'   output_file = 'test',
 #'   output_format = 'pdf_document', # you can also create a .pdf
-#'   title = 'My iris report',
 #'   file = TRUE, # Output single distinct counts to a file
 #'   file_type = 'multiple',
 #'   file_format = 'csv'
@@ -49,11 +51,12 @@ dbreport = function(con = NULL,
                     tbl = NULL,
                     col = NULL,
                     entry = NULL,
-                    title = 'My report title',
-                    text = NULL,
+                    report_title = 'My report title',
+                    report_text = NULL,
                     plot_distinct = TRUE,
                     plot_type = c('lollipop', 'bar_horiz', 'treemap'),
                     plot_limit = 40L,
+                    plot_limit_text = 20L,
                     output_dir = NULL,
                     output_file = 'report',
                     output_format = c('html_document', 'html_vignette', 'pdf_document', 'word_document'),
@@ -104,11 +107,12 @@ dbreport = function(con = NULL,
                       tbl = tbl,
                       col = col,
                       entry = entry,
-                      title = title,
-                      text = text,
+                      title = report_title,
+                      report_text = report_text,
                       plot_distinct = plot_distinct,
                       plot_type = plot_type,
                       plot_limit = plot_limit,
+                      plot_limit_text = plot_limit_text,
                       output_dir = output_dir,
                       file = file,
                       file_format = file_format,
