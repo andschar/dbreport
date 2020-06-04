@@ -50,8 +50,8 @@ dbreport = function(con = NULL,
                     title = 'My report title',
                     text = NULL,
                     plot_distinct = TRUE,
-                    plot_type = c('lollipop', 'treemap'),
-                    plot_limit = 100L,
+                    plot_type = c('lollipop', 'bar_horiz', 'treemap'),
+                    plot_limit = 40L,
                     output_dir = NULL,
                     output_file = 'report',
                     output_format = c('html_document', 'html_vignette', 'pdf_document', 'word_document'),
@@ -87,6 +87,8 @@ dbreport = function(con = NULL,
                     output_file = output_file,
                     output_options = list(
                       toc = TRUE,
+                      toc_float = TRUE,
+                      toc_collapsed = FALSE,
                       toc_depth = 3,  # upto three depths of headings (specified by #, ## and ###)
                       number_sections = FALSE,  ## if you want number sections at each table header
                       theme = 'united',  # many options for theme, this one is my favorite.

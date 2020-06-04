@@ -9,6 +9,8 @@ meta = function(...) {
 meta.SQLiteConnection = function(con = NULL,
                                  schema = NULL,
                                  tbl = NULL,
+                                 plot_type = NULL,
+                                 plot_limit = NULL,
                                  output_dir = NULL,
                                  output_file = NULL,
                                  ...) {
@@ -24,6 +26,8 @@ meta.SQLiteConnection = function(con = NULL,
                    table = tbl,
                    `table rows` = tbl_row(con = con, schema = schema, tbl = tbl),
                    `table size` = paste0(tbl_size(con = con, schema = schema, tbl = tbl), collapse = ' '),
+                   plot_type = plot_type,
+                   plot_limit = plot_limit,
                    output_dir = output_dir,
                    output_file = output_file)
   
@@ -38,6 +42,8 @@ meta.PostgreSQLConnection = meta.SQLiteConnection
 
 # R objects ---------------------------------------------------------------
 meta.data.table = function(con = NULL,
+                           plot_type = NULL,
+                           plot_limit = NULL,
                            output_dir = NULL,
                            output_file = NULL,
                            ...) {
@@ -45,6 +51,8 @@ meta.data.table = function(con = NULL,
                    `table type` = paste0(as.character(class(con)), collapse = ', '),
                    `table rows` = tbl_row(con),
                    `table size` = paste0(tbl_size(con, schema, tbl), collapse = ' '),
+                   plot_type = plot_type,
+                   plot_limit = plot_limit,
                    output_dir = output_dir,
                    output_file = output_file)
   out = transpose(out, keep.names = 'variable')
