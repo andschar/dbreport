@@ -4,20 +4,20 @@
 #' 
 #' @import data.table rmarkdown knitr ggplot2 treemap
 #'
-#' @param con Connection to data base, R-object (data.table, data.frame, tibble). Required.
+#' @param con Connection to data base or an R-object (data.table, data.frame, tibble). Required.
 #' @param schema Data base schema (if applicable).
 #' @param tbl Table to be used for summary report (if applicable).
 #' @param col Table columns that should be summarised in report.
-#' @param entry Table entries which should be comsidered in summary report.
+#' @param entry Specific table entries which should be comsidered in the summary table.
 #' @param title Title of summary report.
 #' @param text User defined text input to add some description to the report. Default NULL - no text. Can be a character vector or a file.
-#' @param plot_distinct Include plots of ordered distinct counts of each column in summary report.
-#' @param plot_type Should a lollipop or a treemap plot be produced?
-#' @param plot_limit Limit distinct count axis in the plots. Default: 100L. Should be set to a reasonable size.
+#' @param plot_distinct Include plots of ordered distinct counts of each column entryin the report?
+#' @param plot_type Should a lollipop, barplot or treemap plot be produced?
+#' @param plot_limit Limit distinct count axis in the plots. Default: 40L.
 #' @param output_dir To which directory should the output be saved?
-#' @param output_file File name
+#' @param output_file File name of the report.
 #' @param output_format Which markdown output_format should be used for rendering the summary report? E.g. html_document, html_vignette, pdf_document, ...
-#' @param file Should one or multiple files for each distinct column counts br created?
+#' @param file Should one or multiple files for each distinct column counts be created?
 #' @param file_format To which format should the file(s) be put out (csv, json). Multiple possible.
 #' @param file_type Output each column distinct counts set to a single or to multiple files.
 #' @param exit logical. Should database connections be closed after runing dbreport(). Default: TRUE.
@@ -30,17 +30,19 @@
 #' @examples
 #' \donttest{
 #' # creates a .html, .pdf, .doc via Rmarkdown
-#' dbreport(con = iris,
-#'          plot_distinct = TRUE,
-#'          plot_type = 'lollipop',
-#'          plot_limit = 10, # Limit your plot to the first 15 entries
-#'          output_dir = file.path(tempdir(), 'iris'),
-#'          output_file = 'test',
-#'          output_format = 'pdf_document', # you can also create a .pdf
-#'          title = 'My iris report',
-#'          file = TRUE, # Output single distinct counts to a file
-#'          file_type = 'multiple',
-#'          file_format = 'csv')
+#' dbreport(
+#'   con = iris,
+#'   plot_distinct = TRUE,
+#'   plot_type = 'lollipop',
+#'   plot_limit = 10, # Limit your plot to the first 15 entries
+#'   output_dir = file.path(tempdir(), 'iris'),
+#'   output_file = 'test',
+#'   output_format = 'pdf_document', # you can also create a .pdf
+#'   title = 'My iris report',
+#'   file = TRUE, # Output single distinct counts to a file
+#'   file_type = 'multiple',
+#'   file_format = 'csv'
+#' )
 #' }
 dbreport = function(con = NULL,
                     schema = NULL,

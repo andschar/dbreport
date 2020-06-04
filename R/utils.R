@@ -6,13 +6,15 @@
 #' @param fig.width figure width
 #' @param chunk_name name of the chunk
 #' 
+#' @author Andreas Scharmueller \email{andschar@@protonmail.com}
+#'
 subchunkify = function(pl,
                        fig.height = 7,
                        fig.width = 5,
                        chunk_name = 'plot') {
-  pl_deparsed <- paste0(deparse(
-    function() {pl}
-    ), collapse = '')
+  pl_deparsed <- paste0(deparse(function() {
+    pl
+  }), collapse = '')
   
   sub_chunk = paste0(
     "```{r ",
@@ -28,15 +30,6 @@ subchunkify = function(pl,
     ")()",
     "\n```"
   )
-  
-  # sub_chunk <- paste0("
-  # `","``{r sub_chunk_", floor(runif(1) * 10000), ", fig.height=",
-  #  fig.height, ", fig.width=", fig.width, ", echo=FALSE}",
-  # "\n(",
-  #   pl_deparsed
-  #   , ")()",
-  # "\n`","``
-  # ")
   
   cat(knitr::knit(
     text = knitr::knit_expand(text = sub_chunk),

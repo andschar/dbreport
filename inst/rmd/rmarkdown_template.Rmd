@@ -104,29 +104,6 @@ if (plot_distinct) {
 
 ```
 
-
-```{r plot-OLD, echo=FALSE, fig.height=7, fig.width=15, dpi=72, message=FALSE, warning=FALSE, results='asis'}
-# if (plot_distinct) {
-#   for (i in seq_along(tbl_l$distinct)) {
-#     dat = tbl_l$distinct[[i]]
-#     col = names(tbl_l$distinct)[i]
-#     setDT(dat)
-#     dat[ , var20 := substr(get(col), 1, 20) ]
-#     dat[ , n_distinct := as.integer(n_distinct) ] # NOTE to get rid of integer64, that might be returned - can be done more gracefully
-#     if (!is.null(plot_limit))
-#       dat = dat[1:plot_limit, ]
-#     # header
-#     cat('  \n###', col, '\n') # OPTION pander::pandoc.header(paste0('Column: ', col), level = 3)
-#     # plots
-#     print(pl_gg(dat = dat, x = 'var20', y = 'n_distinct', plot_type = plot_type))
-#     cat('<a href="#top">Back to top</a>')
-#     cat('  \n') # OPTION # pander::pandoc.p(''); pander::pandoc.p('')
-#   }
-# } else {
-#   print('Plots should not be printed.')
-# }
-```
-
 ```{r write, echo=FALSE, message=FALSE, warning=FALSE}
 if (is.null(file)) {
   print('Files should not be written.')

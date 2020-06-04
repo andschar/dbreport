@@ -5,6 +5,8 @@
 #' @param tbl database table
 #' @param col specific table column
 #' @param verbose verbose output
+#' 
+#' @author Andreas Scharmueller, \email{andschar@@protonmail.com}
 #'  
 tbl_col_distinct = function(...) {
   UseMethod('tbl_col_distinct')
