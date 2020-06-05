@@ -7,7 +7,7 @@
 pl_lollipop = function(dat = NULL,
                        x = NULL,
                        y = NULL) {
-  # DEBUG dat = tbl_l$distinct$species[1:100L]; x = 'species'; y = 'n_distinct'; dat[ , n_distinct := as.integer(n_distinct) ]
+  # dat = tbl_l$distinct$species[1:100L]; x = 'species'; y = 'n_distinct'; dat[ , n_distinct := as.integer(n_distinct) ]
   ggplot2::ggplot(dat, ggplot2::aes(x = reorder(get(x), get(y)), y = get(y))) +
     # ggplot2::geom_bar(stat = 'identity') +
     ggplot2::geom_segment(ggplot2::aes(xend = get(x), y = 0, yend = get(y)), 

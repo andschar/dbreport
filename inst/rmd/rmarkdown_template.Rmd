@@ -76,10 +76,11 @@ if (plot_distinct) {
     col = names(tbl_l$distinct)[i]
     setDT(dat)
     dat[ , var20 := as.character(str_limit(get(col), plot_limit_text)) ]
-    dat[ , n_distinct := as.integer(n_distinct) ] # NOTE to get rid of integer64, that might be returned - can be done more gracefully
-    if (!is.null(plot_limit))
-      dat = dat[1:plot_limit, ]
-    height = length(unique(dat$var20)) / 4
+    dat[ , n_distinct := as.numeric(n_distinct) ] # NB to get rid of integer64, that might be returned - can be done more gracefully - as.integer doesn't work!
+    if (!is.null(plot_limit) & plot_limit < nrow(dat)) {
+      dat = dat[ 1:plot_limit ]
+    }
+    height = ceiling(length(unique(dat$var20)) / 4)
     # header
     cat('  \n###', col, '\n') # OPTION pander::pandoc.header(paste0('Column: ', col), level = 3)
     # plots
