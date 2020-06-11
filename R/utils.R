@@ -12,7 +12,7 @@ subchunkify = function(pl,
                        fig.height = 7,
                        fig.width = 5,
                        chunk_name = 'plot') {
-  pl_deparsed <- paste0(deparse(function() {
+  pl_deparsed = paste0(deparse(function() {
     pl
   }), collapse = '')
   

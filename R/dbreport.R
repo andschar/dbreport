@@ -17,7 +17,7 @@
 #' @param plot_limit_text integer; Limit axis text to a certain length. Default: NULL (i.e. no limit is applied).
 #' @param output_dir character; To which directory should the output be saved?
 #' @param output_file character; File name of the report.
-#' @param output_format character; Which markdown output_format should be used for rendering the summary report? E.g. html_document, html_vignette, pdf_document, ...
+#' @param output_format object; directly passed on to rmarkdown::render(). Default: html_document(theme = 'united', highlight = 'tango').
 #' @param file logical; Should one or multiple files for each distinct column counts be created?
 #' @param file_format character; To which format should the file(s) be put out (csv, json). Multiple possible.
 #' @param file_type character; Output each column distinct counts set to a single or to multiple files.
@@ -40,7 +40,6 @@
 #'   plot_limit = 10, # Limit your plot to the first 15 entries
 #'   output_dir = file.path(tempdir(), 'iris'),
 #'   output_file = 'test',
-#'   output_format = 'pdf_document', # you can also create a .pdf
 #'   file = TRUE, # Output single distinct counts to a file
 #'   file_type = 'multiple',
 #'   file_format = 'csv'
@@ -59,7 +58,7 @@ dbreport = function(con = NULL,
                     plot_limit_text = 20L,
                     output_dir = NULL,
                     output_file = 'report',
-                    output_format = c('html_document', 'html_vignette', 'pdf_document', 'word_document'),
+                    output_format = html_document(theme = 'united', highlight = 'tango'),
                     file = TRUE,
                     file_format = c('csv', 'json'),
                     file_type = c('single', 'multiple'),
@@ -79,7 +78,6 @@ dbreport = function(con = NULL,
     stop('The argument plot_limit must be integer.')
   if (is.null(output_dir))
     stop('Provide a directory for the output: output_dir = NULL')
-  output_format = match.arg(output_format, several.ok = TRUE)
   file_format = match.arg(file_format)
   file_type = match.arg(file_type)
   # check db
@@ -95,9 +93,7 @@ dbreport = function(con = NULL,
                       toc_float = TRUE,
                       toc_collapsed = FALSE,
                       toc_depth = 3,  # upto three depths of headings (specified by #, ## and ###)
-                      number_sections = FALSE,  ## if you want number sections at each table header
-                      theme = 'united',  # many options for theme, this one is my favorite.
-                      highlight = 'tango'  # specifies the syntax highlighting style
+                      number_sections = FALSE  ## if you want number sections at each table header
                       # css: my.css   # you can add your custom css, should be in same folder
                       # taken from: https://stackoverflow.com/questions/23957278
                     ),

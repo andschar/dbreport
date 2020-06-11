@@ -84,6 +84,8 @@ if (plot_distinct) {
     # header
     cat('  \n###', col, '\n') # OPTION pander::pandoc.header(paste0('Column: ', col), level = 3)
     # plots
+    # TODO add if statement numeric vs caharacter/factor here
+    # TODO then plot numeric variables as violins with quantiles
     if (plot_type == 'lollipop') {
       subchunkify(
         print(pl_lollipop(dat = dat, x = 'var20', y = 'n_distinct')),

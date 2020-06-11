@@ -66,6 +66,7 @@ pl_treemap = function(dat = NULL,
                                   grow = FALSE,
                                   reflow = TRUE) +
     ggplot2::scale_fill_viridis_d() +
+    ggplot2::theme_minimal() +
     ggplot2::theme(legend.position = 'none')
 }
   

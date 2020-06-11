@@ -18,7 +18,7 @@ dbreport(
   plot_limit_text = 20L,
   output_dir = NULL,
   output_file = "report",
-  output_format = c("html_document", "html_vignette", "pdf_document", "word_document"),
+  output_format = html_document(theme = "united", highlight = "tango"),
   file = TRUE,
   file_format = c("csv", "json"),
   file_type = c("single", "multiple"),
@@ -53,7 +53,7 @@ dbreport(
 
 \item{output_file}{character; File name of the report.}
 
-\item{output_format}{character; Which markdown output_format should be used for rendering the summary report? E.g. html_document, html_vignette, pdf_document, ...}
+\item{output_format}{object; directly passed on to rmarkdown::render(). Default: html_document(theme = 'united', highlight = 'tango').}
 
 \item{file}{logical; Should one or multiple files for each distinct column counts be created?}
 
@@ -83,7 +83,6 @@ dbreport(
   plot_limit = 10, # Limit your plot to the first 15 entries
   output_dir = file.path(tempdir(), 'iris'),
   output_file = 'test',
-  output_format = 'pdf_document', # you can also create a .pdf
   file = TRUE, # Output single distinct counts to a file
   file_type = 'multiple',
   file_format = 'csv'
