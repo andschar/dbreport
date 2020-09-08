@@ -58,7 +58,13 @@ dbreport = function(con = NULL,
                     plot_limit_text = 20L,
                     output_dir = NULL,
                     output_file = 'report',
-                    output_format = html_document(theme = 'united', highlight = 'tango'),
+                    output_format = html_document(theme = 'united',
+                                                  highlight = 'tango',
+                                                  toc = TRUE,
+                                                  toc_float = TRUE,
+                                                  toc_collapsed = FALSE,
+                                                  toc_depth = 3,
+                                                  number_sections = FALSE),
                     file = TRUE,
                     file_format = c('csv', 'json'),
                     file_type = c('single', 'multiple'),
@@ -88,15 +94,6 @@ dbreport = function(con = NULL,
                     output_format = output_format,
                     output_dir = output_dir,
                     output_file = output_file,
-                    output_options = list(
-                      toc = TRUE,
-                      toc_float = TRUE,
-                      toc_collapsed = FALSE,
-                      toc_depth = 3,  # upto three depths of headings (specified by #, ## and ###)
-                      number_sections = FALSE  ## if you want number sections at each table header
-                      # css: my.css   # you can add your custom css, should be in same folder
-                      # taken from: https://stackoverflow.com/questions/23957278
-                    ),
                     params = list(
                       con = con,
                       schema = schema,
