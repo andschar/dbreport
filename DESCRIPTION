@@ -5,14 +5,18 @@ Description: dbreport allows you to create automated reports from data base tabl
     The reports sum up most important informations of tables (i.e. how many NULLs a column has
     or counts distinct entries) and returns them as a .html, .pdf, or .doc file.
 Type: Package
-Version: 0.0.0.9014
+Version: 0.0.0.9015
 Date: 2020-09-08
 License: MIT + file LICENSE
 Encoding: UTF-8
 URL: https://github.com/andschar/dbreport
 BugReports: https://github.com/andschar/dbreport/issues
-Authors@R: c(person("Andreas", "Scharmüller", role = c("aut", "cre"),
-    email = "andschar@protonmail.com"))
+Authors@R: c(
+    person("Andreas", "Scharmüller",
+            role = c("aut", "cre"),
+            email = "andschar@protonmail.com",
+            comment = c(ORCID = "0000-0002-9290-3965"))
+    )
 Maintainer: Andreas Scharmüller <andschar@protonmail.com>
 Imports:
     data.table,
