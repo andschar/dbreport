@@ -2,7 +2,7 @@
 % Please edit documentation in R/fetch.R
 \name{fetch}
 \alias{fetch}
-\title{function to retrieve data from databases or R-objects}
+\title{Function to retrieve data from databases or R-objects}
 \usage{
 fetch(
   con = NULL,
@@ -15,7 +15,7 @@ fetch(
 )
 }
 \arguments{
-\item{con}{Database connection obj or R table object}
+\item{con}{Database connection or R table object}
 
 \item{schema}{Database schema}
 
@@ -25,8 +25,11 @@ fetch(
 
 \item{entry}{Entry to be looked for}
 
-\item{verbose}{Verbose output}
+\item{verbose}{Verbose output?}
 }
 \description{
-function to retrieve data from databases or R-objects
+Function to retrieve data from databases or R-objects
+}
+\author{
+Andreas Scharmueller \email{andschar@protonmail.com}
 }

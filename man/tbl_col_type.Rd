@@ -7,7 +7,7 @@
 tbl_col_type(...)
 }
 \arguments{
-\item{con}{database connection obj or R table object}
+\item{con}{database connection or R table object}
 
 \item{schema}{database schema}
 
@@ -15,4 +15,7 @@ tbl_col_type(...)
 }
 \description{
 S3 method to retrieve the column types of a table
+}
+\author{
+Andreas Scharmueller, \email{andschar@protonmail.com}
 }

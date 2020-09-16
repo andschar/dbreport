@@ -1,8 +1,10 @@
 #' S3 method to retrieve size of table
 #'
-#' @param con database connection obj or R table object
+#' @param con database connection or R table object
 #' @param schema database schema
 #' @param tbl database table
+#'
+#' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'
 tbl_size = function(...) {
   UseMethod('tbl_size')
@@ -21,10 +23,16 @@ tbl_size.MySQLConnection = function(con,
                                     schema,
                                     tbl,
                                     ...) {
-  q = paste0("SELECT data_length + index_length AS table_size
+  q = paste0(
+    "SELECT data_length + index_length AS table_size
               FROM information_schema.tables
-              WHERE table_schema = '", schema, "'
-              AND table_name = '", tbl, "';")
+              WHERE table_schema = '",
+    schema,
+    "'
+              AND table_name = '",
+    tbl,
+    "';"
+  )
   size = DBI::dbGetQuery(con, q)
   out = conv_byte(size)
   out
@@ -45,7 +53,7 @@ tbl_size.PqConnection = tbl_size.PostgreSQLConnection
 # R object ----------------------------------------------------------------
 tbl_size.data.table = function(con,
                                ...) {
-  out = conv_byte(data.table(as.numeric(object.size(con))))
+  out = conv_byte(data.table::data.table(as.numeric(object.size(con))))
   out
 }
 

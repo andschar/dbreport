@@ -2,10 +2,30 @@
 % Please edit documentation in R/meta.R
 \name{meta}
 \alias{meta}
-\title{function to retrieve meta data from databases or R-objects}
+\title{Function to retrieve meta data from databases or R-objects}
 \usage{
 meta(...)
 }
+\arguments{
+\item{con}{Database connection or R table object}
+
+\item{schema}{Database schema}
+
+\item{tbl}{Database table}
+
+\item{plot_type}{Plot type}
+
+\item{plot_limit}{Plot limit}
+
+\item{plot_limit_text}{Plot text limit}
+
+\item{output_dir}{Output directory}
+
+\item{output_file}{Output file}
+}
 \description{
-function to retrieve meta data from databases or R-objects
+Function to retrieve meta data from databases or R-objects
+}
+\author{
+Andreas Scharmueller \email{andschar@protonmail.com}
 }

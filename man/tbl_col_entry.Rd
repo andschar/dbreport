@@ -7,7 +7,7 @@
 tbl_col_entry(...)
 }
 \arguments{
-\item{con}{database connection obj or R table object}
+\item{con}{database connection or R table object}
 
 \item{schema}{database schema}
 
@@ -19,4 +19,7 @@ tbl_col_entry(...)
 }
 \description{
 S3 method to get count of specific entries
+}
+\author{
+Andreas Scharmueller, \email{andschar@protonmail.com}
 }

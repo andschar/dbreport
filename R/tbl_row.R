@@ -1,9 +1,10 @@
 #' S3 method to retrieve the number of rows
 #'
-#' @param con database connection obj or R table object
+#' @param con database connection or R table object
 #' @param schema database schema
 #' @param tbl database table
 #'
+#' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'
 tbl_row = function(...) {
   UseMethod('tbl_row')

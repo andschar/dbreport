@@ -6,6 +6,14 @@
 \usage{
 sql_quote(...)
 }
+\arguments{
+\item{con}{database connection}
+
+\item{x}{a string to quote}
+}
 \description{
 S3 method to escape SQL variables accordingly
+}
+\author{
+Andreas Scharmueller, \email{andschar@protonmail.com}
 }
