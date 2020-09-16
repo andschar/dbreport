@@ -5,6 +5,7 @@ write_to_dir = function(l = NULL,
                         output_file = NULL,
                         file_format = c('csv', 'json'),
                         file_type = c('single', 'multiple')) {
+  # TODO optimize memory handling. Maybe clean RAM cache before every file creation
   # checks
   if (is.null(l))
     stop('Provide a list to be put out.')

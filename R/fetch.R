@@ -15,17 +15,20 @@ fetch = function(con = NULL,
                  verbose = FALSE,
                  ...) {
   # checking
-  if (is.null(con))
+  if (is.null(con)) {
     stop('No data base connection or R-object supplied.')
+  }
   # summary stats
   type = tbl_col_type(con = con, schema = schema, tbl = tbl)
-  if (is.null(col))
+  if (is.null(col)) {
     col = type$col
+  }
   dist_l = tbl_col_distinct(con = con, schema = schema, tbl = tbl, col = col, verbose = verbose)
   dist_n = dist_l$distinct_n
   null = tbl_col_null(con = con, schema = schema, tbl = tbl, col = col)
-  if (!is.null(entry))
+  if (!is.null(entry)) {
     entry = tbl_col_entry(con = con, schema = schema, tbl = tbl, col = col, entry = entry)
+  }
   example = examples_n(dist_l$distinct, n = 3)
   l = list(type = type,
            dist_n = dist_n,
