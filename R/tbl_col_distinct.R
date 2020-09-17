@@ -91,7 +91,3 @@ tbl_col_distinct.data.table = function(con,
 tbl_col_distinct.data.frame = tbl_col_distinct.data.table
 tbl_col_distinct.tibble = tbl_col_distinct.data.table
 
-
-
-
-
