@@ -3,7 +3,7 @@
 #' @param con database connection or R table object
 #' @param schema database schema
 #' @param tbl database table
-#' @param col specific table column
+#' @param column specific table column
 #' @param verbose verbose output
 #'
 #' @author Andreas Scharmueller, \email{andschar@@protonmail.com}
@@ -15,17 +15,18 @@ tbl_col_distinct_n = function(...) {
 tbl_col_distinct_n.SQLiteConnection = function(con,
                                                schema = NULL,
                                                tbl = NULL,
-                                               col = NULL,
+                                               column = NULL,
                                                verbose = FALSE) {
   # helper function
   f_distinct_n = function(con,
                           schema,
                           tbl,
-                          col) {
+                          column) {
     # NOTE Assume that this works for all SQL software, otherwise make own S3 method
     q_l = list()
-    for (i in seq_along(col)) {
-      cl = col[i]
+    for (i in seq_along(column)) {
+      cl_n <<- column[i]
+      cl = column[i]
       # query
       select = paste0("SELECT '", cl, "' AS cols, COUNT(*) AS distinct ")
       if (is.null(schema)) {
@@ -50,14 +51,14 @@ tbl_col_distinct_n.SQLiteConnection = function(con,
       names(q_l)[i] = cl
     }
     
-    return(q_l)
+    q_l
   }
   # query list
   l_q_distinct_n = f_distinct_n(
     con = con,
     schema = schema,
     tbl = tbl,
-    col = col
+    column = column
   )
   # query
   l_distinct_n = list()

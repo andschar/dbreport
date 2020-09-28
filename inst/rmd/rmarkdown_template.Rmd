@@ -12,7 +12,7 @@ params:
   plot_limit: 40L
   plot_limit_text: 20L
   out: TRUE
-  col: NULL
+  column: NULL
   entry: NULL
   output_dir: NULL # https://community.rstudio.com/t/is-it-possible-to-save-the-html-output-in-a-directory-which-is-not-the-one-where-the-rmd-file-resides/3588/6
   output_file: 'report'
@@ -28,10 +28,10 @@ date: "`r format(Sys.Date(), '%d.%m.%Y')`"
 tbl_l <<- fetch(con = con, # TODO debugging
               schema = schema,
               tbl = tbl,
-              col = col,
+              column = column,
               entry = entry,
               verbose = verbose)
-meta_dt <<- meta(con = con,
+meta_dt <<- meta(con = con, # TODO debugging
                schema = schema,
                tbl = tbl,
                plot_type = plot_type,

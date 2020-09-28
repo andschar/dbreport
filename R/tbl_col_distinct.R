@@ -3,7 +3,7 @@
 #' @param con database connection or R table object
 #' @param schema database schema
 #' @param tbl database table
-#' @param col specific table column
+#' @param column specific table column
 #' @param col_numeric logical; whether a column is numeric or not
 #' @param verbose verbose output
 #'
@@ -16,7 +16,7 @@ tbl_col_distinct = function(...) {
 tbl_col_distinct.SQLiteConnection = function(con,
                                              schema = NULL,
                                              tbl = NULL,
-                                             col = NULL,
+                                             column = NULL,
                                              col_numeric = NULL,
                                              verbose = FALSE) {
   # helper functions
@@ -24,12 +24,12 @@ tbl_col_distinct.SQLiteConnection = function(con,
   f_distinct = function(con,
                         schema,
                         tbl,
-                        col,
+                        column,
                         col_numeric) {
     q_l = list()
-    for (i in seq_along(col)) {
-      cl = col[i]
-      num = col_numeric[i]
+    for (i in seq_along(column)) {
+      cl <<- column[i]
+      num <<- col_numeric[i]
       # query
       if (!num) {
         select = paste0("SELECT ", sql_quote(con, cl), ", count(*) AS n_distinct") # DROPS NULLs: count(", sql_quote(con, i), ")
@@ -97,7 +97,7 @@ tbl_col_distinct.SQLiteConnection = function(con,
     con = con,
     schema = schema,
     tbl = tbl,
-    col = col,
+    column = column,
     col_numeric = col_numeric
   )
   # TODO probably faster in a bulk query OR maybe BEGIN...COMMIT

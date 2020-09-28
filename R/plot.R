@@ -1,7 +1,7 @@
 #' Plots a vertical lollipop ggplot()
 #'
 #' @param dat data.table object
-#' @param col Column
+#' @param column Column
 #' @param plot_limit Limit number of plotted lines
 #' @param plot_limit_text Limit axis plot axis text
 #' @param ... not used
@@ -12,14 +12,14 @@ pl_lollipop = function(...) {
   UseMethod('pl_lollipop')
 }
 pl_lollipop.categorical = function(dat = NULL,
-                                   col = NULL,
+                                   column = NULL,
                                    plot_limit = NULL,
                                    plot_limit_text = NULL,
                                    ...) {
   # dat = tbl_l$distinct$class; x = 'species'; y = 'n_distinct'; dat[ , n_distinct := as.integer(n_distinct) ] # DEBUG
   # prepare
   data.table::setDT(dat)
-  dat[, var20 := as.character(str_limit(get(col), plot_limit_text))]
+  dat[, var20 := as.character(str_limit(get(column), plot_limit_text))]
   dat[, n_distinct := as.numeric(n_distinct)] # NB to get rid of integer64, that might be returned - can be done more gracefully - as.integer doesn't work!
   if (!is.null(plot_limit) & plot_limit < nrow(dat)) {
     dat = dat[1:plot_limit]
@@ -29,8 +29,8 @@ pl_lollipop.categorical = function(dat = NULL,
     ggplot2::geom_segment(ggplot2::aes(xend = var20,
                                        y = 0,
                                        yend = n_distinct),
-                          col = 'skyblue') +
-    ggplot2::geom_point(col = 'blue',
+                          color = 'skyblue') +
+    ggplot2::geom_point(color = 'blue',
                         size = 4,
                         alpha = 0.6) +
     ggplot2::geom_text(
@@ -50,10 +50,10 @@ pl_lollipop.categorical = function(dat = NULL,
     )
 }
 pl_lollipop.continuous = function(dat = NULL,
-                                  col = NULL,
+                                  column = NULL,
                                   ...) {
   # dat = data.table::transpose(dat)
-  ggplot2::ggplot(dat, ggplot2::aes(x = get(col))) +
+  ggplot2::ggplot(dat, ggplot2::aes(x = get(column))) +
     ggplot2::geom_density() +
     ggplot2::theme_minimal()
   
@@ -62,8 +62,8 @@ pl_lollipop.continuous = function(dat = NULL,
   #   y = 0,
   #   yend = get(y)
   # ),
-  # col = 'skyblue') +
-  # ggplot2::geom_point(col = 'blue',
+  # color = 'skyblue') +
+  # ggplot2::geom_point(color = 'blue',
   #                     size = 4,
   #                     alpha = 0.6)
   
@@ -72,7 +72,7 @@ pl_lollipop.continuous = function(dat = NULL,
 #' Plots a horizontal bar-ggplot()
 #'
 #' @param dat data.table object
-#' @param col Column
+#' @param column Column
 #' @param plot_limit Limit number of plotted lines
 #' @param plot_limit_text Limit axis plot axis text
 #' @param ... not used
@@ -83,13 +83,13 @@ pl_bar_horiz = function(...) {
   UseMethod('pl_bar_horiz')
 }
 pl_bar_horiz.categorical = function(dat = NULL,
-                                    col = NULL,
+                                    column = NULL,
                                     plot_limit = NULL,
                                     plot_limit_text = NULL,
                                     ...) {
   # prepare
   data.table::setDT(dat)
-  dat[, var20 := as.character(str_limit(get(col), plot_limit_text))]
+  dat[, var20 := as.character(str_limit(get(column), plot_limit_text))]
   dat[, n_distinct := as.numeric(n_distinct)] # NB to get rid of integer64, that might be returned - can be done more gracefully - as.integer doesn't work!
   if (!is.null(plot_limit) & plot_limit < nrow(dat)) {
     dat = dat[1:plot_limit]
@@ -106,8 +106,8 @@ pl_bar_horiz.categorical = function(dat = NULL,
     ) +
     ggplot2::scale_y_continuous(expand = ggplot2::expansion(mult = c(0.05, 0.12))) +
     ggplot2::scale_x_discrete(expand = ggplot2::expansion(mult = c(0.05, 0.05))) +
-    ggplot2::labs(# title = col,
-      # subtitle = col,
+    ggplot2::labs(# title = column,
+      # subtitle = column,
       x = NULL,
       y = NULL) +
     ggplot2::theme_minimal() +
@@ -121,9 +121,9 @@ pl_bar_horiz.categorical = function(dat = NULL,
     )
 }
 pl_bar_horiz.continuous = function(dat = NULL,
-                                   col = NULL,
+                                   column = NULL,
                                    ...) {
-  ggplot2::ggplot(dat, ggplot2::aes(x = get(col))) +
+  ggplot2::ggplot(dat, ggplot2::aes(x = get(column))) +
     ggplot2::geom_density() +
     ggplot2::theme_minimal()
 }
@@ -131,7 +131,7 @@ pl_bar_horiz.continuous = function(dat = NULL,
 #' Plots a ggplot() treemap
 #'
 #' @param dat data.table object
-#' @param col Column
+#' @param column Column
 #' @param plot_limit Limit number of plotted lines
 #' @param plot_limit_text Limit axis plot axis text
 #' @param ... not used
@@ -143,13 +143,13 @@ pl_treemap = function(...) {
 }
 
 pl_treemap.categorical = function(dat = NULL,
-                                  col = NULL,
+                                  column = NULL,
                                   plot_limit = NULL,
                                   plot_limit_text = NULL,
                                   ...) {
   # prepare
   data.table::setDT(dat)
-  dat[, var20 := as.character(str_limit(get(col), plot_limit_text))]
+  dat[, var20 := as.character(str_limit(get(column), plot_limit_text))]
   dat[, n_distinct := as.numeric(n_distinct)] # NB to get rid of integer64, that might be returned - can be done more gracefully - as.integer doesn't work!
   if (!is.null(plot_limit) & plot_limit < nrow(dat)) {
     dat = dat[1:plot_limit]
@@ -174,9 +174,9 @@ pl_treemap.categorical = function(dat = NULL,
 }
 
 pl_treemap.continuous = function(dat = NULL,
-                                 col = NULL,
+                                 column = NULL,
                                  ...) {
-  ggplot2::ggplot(dat, ggplot2::aes(x = get(col))) +
+  ggplot2::ggplot(dat, ggplot2::aes(x = get(column))) +
     ggplot2::geom_density() +
     ggplot2::theme_minimal()
   # ggplot2::ggplot(dat, ggplot2::aes_string(

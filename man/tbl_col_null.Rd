@@ -13,7 +13,7 @@ tbl_col_null(...)
 
 \item{tbl}{database table}
 
-\item{col}{specific table column}
+\item{column}{specific table column}
 }
 \description{
 S3 method to get the amount of NULLs or NAs in each column

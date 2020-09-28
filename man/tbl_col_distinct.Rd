@@ -13,7 +13,7 @@ tbl_col_distinct(...)
 
 \item{tbl}{database table}
 
-\item{col}{specific table column}
+\item{column}{specific table column}
 
 \item{col_numeric}{logical; whether a column is numeric or not}
 

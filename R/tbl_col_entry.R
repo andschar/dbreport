@@ -1,10 +1,10 @@
 #' S3 method to get count of specific entries
 #'
-#' @param con database connection or R table object
-#' @param schema database schema
-#' @param tbl database table
-#' @param col specific table column
-#' @param entry entry to be looked for
+#' @param con Database connection or R table object
+#' @param schema Database schema
+#' @param tbl Database table
+#' @param column Column
+#' @param entry Entry to be looked for
 #'
 #' @author Andreas Scharmueller, \email{andschar@@protonmail.com}
 #'
@@ -15,9 +15,9 @@ tbl_col_entry = function(...) {
 tbl_col_entry.SQLiteConnection = function(con,
                                           schema = NULL,
                                           tbl = NULL,
-                                          col = NULL,
+                                          column = NULL,
                                           entry = NULL) {
-  foo = function(con, schema, tbl, col, entry) {
+  foo = function(con, schema, tbl, column, entry) {
     # checking
     if (is.null(tbl)) {
       stop('No data base table supplied.')
@@ -31,11 +31,11 @@ tbl_col_entry.SQLiteConnection = function(con,
     # sql
     q = paste0(
       "SELECT COUNT(",
-      sql_quote(con, col),
+      sql_quote(con, column),
       ") AS n",
       from,
       "\nWHERE LOWER(CAST(",
-      sql_quote(con, col),
+      sql_quote(con, column),
       " AS CHAR(100))) = LOWER('",
       entry,
       "');"
@@ -50,7 +50,7 @@ tbl_col_entry.SQLiteConnection = function(con,
     v = as.character(entry[i])
     dt = mapply(
       FUN = foo,
-      col = col,
+      column = column,
       entry = v,
       MoreArgs = list(
         con = con,
@@ -59,7 +59,7 @@ tbl_col_entry.SQLiteConnection = function(con,
       )
     )
     dt = data.table::transpose(data.table::as.data.table(dt))
-    dt[, cols := col]
+    dt[, cols := column]
     data.table::setnames(dt, 'V1', paste0('n_', v))
     
     entry_l[[i]] = dt
@@ -74,7 +74,7 @@ tbl_col_entry.PqConnection = tbl_col_entry.SQLiteConnection
 tbl_col_entry.PostgreSQLConnection = tbl_col_entry.SQLiteConnection
 
 tbl_col_entry.data.table = function(con,
-                                    col,
+                                    column,
                                     entry,
                                     ...) {
   data.table::setDT(con)

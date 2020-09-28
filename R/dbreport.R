@@ -7,7 +7,7 @@
 #' @param con Connection to data base or an R-object (data.table, data.frame, tibble). Required.
 #' @param schema character; Data base schema (if applicable).
 #' @param tbl character; Table to be used for summary report (if applicable).
-#' @param col character; Table columns that should be summarised in report.
+#' @param column character; Table columns that should be summarised in report.
 #' @param entry any; Specific table entries which should be comsidered in the summary table.
 #' @param report_title character; Title of summary report.
 #' @param report_text character or connection; User defined text input to add some description to the report. Default NULL - no text. Can be a character vector or a file.
@@ -48,7 +48,7 @@
 dbreport = function(con = NULL,
                     schema = NULL,
                     tbl = NULL,
-                    col = NULL,
+                    column = NULL,
                     entry = NULL,
                     report_title = 'My report title',
                     report_text = NULL,
@@ -98,7 +98,7 @@ dbreport = function(con = NULL,
                       con = con,
                       schema = schema,
                       tbl = tbl,
-                      col = col,
+                      column = column,
                       entry = entry,
                       title = report_title,
                       report_text = report_text,

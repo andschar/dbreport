@@ -33,7 +33,7 @@ write_to_dir = function(l = NULL,
   if (file_type == 'single') {
     out = cbind_fill(dflist = l)
     if (file_format == 'csv')
-      fwrite(out, file.path(dir, paste0(output_file, '.csv')))
+      data.table::fwrite(out, file.path(dir, paste0(output_file, '.csv')))
     if (file_format == 'json')
       jsonlite::write_json(out, file.path(dir, paste0(output_file, '.json')))
   }

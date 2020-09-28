@@ -34,7 +34,7 @@ tbl_col_type.PqConnection = function(con,
     schema,
     "';"
   )
-  data.table(DBI::dbGetQuery(con, q1))
+  data.table::data.table(DBI::dbGetQuery(con, q1))
 }
 
 tbl_col_type.PostgreSQLConnection = tbl_col_type.PqConnection
@@ -52,7 +52,7 @@ tbl_col_type.MySQLConnection = function(con,
     schema,
     "';"
   )
-  type = data.table(DBI::dbGetQuery(con, q1))
+  type = data.table::data.table(DBI::dbGetQuery(con, q1))
   data.table::setnames(type, c('cols', 'type')) # NOTE "AS column, DATA_TYPE AS type" throws an error
   type
 }

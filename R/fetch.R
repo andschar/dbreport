@@ -3,7 +3,7 @@
 #' @param con Database connection or R table object
 #' @param schema Database schema
 #' @param tbl Database table
-#' @param col Specific table column
+#' @param column Specific table column
 #' @param entry Entry to be looked for
 #' @param verbose Verbose output?
 #'
@@ -12,7 +12,7 @@
 fetch = function(con = NULL,
                  schema = NULL,
                  tbl = NULL,
-                 col = NULL,
+                 column = NULL,
                  entry = NULL,
                  verbose = FALSE,
                  ...) {
@@ -24,8 +24,8 @@ fetch = function(con = NULL,
   type = tbl_col_type(con = con,
                       schema = schema,
                       tbl = tbl)
-  if (is.null(col)) {
-    col = type$col
+  if (is.null(column)) {
+    column = type$cols
   }
   # TODO add missing types
   cha = c('text', 'varchar')
@@ -36,7 +36,7 @@ fetch = function(con = NULL,
     con = con,
     schema = schema,
     tbl = tbl,
-    col = col,
+    column = column,
     col_numeric = type$numeric,
     verbose = verbose
   )
@@ -44,20 +44,20 @@ fetch = function(con = NULL,
     con = con,
     schema = schema,
     tbl = tbl,
-    col = col
+    column = column
   )
   null = tbl_col_null(
     con = con,
     schema = schema,
     tbl = tbl,
-    col = col
+    column = column
   )
   if (!is.null(entry)) {
     entry = tbl_col_entry(
       con = con,
       schema = schema,
       tbl = tbl,
-      col = col,
+      column = column,
       entry = entry
     )
   }

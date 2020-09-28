@@ -15,9 +15,8 @@ cbind_fill = function(...,
     rbind(x, matrix(
       , n - nrow(x), ncol(x)
     ))))
-  out = data.table::data.table(out)
   
-  return(out)
+  data.table::data.table(out)
 }
 
 #' function to convert numeric (byte) value into pretty byte representation

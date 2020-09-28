@@ -8,7 +8,7 @@ dbreport(
   con = NULL,
   schema = NULL,
   tbl = NULL,
-  col = NULL,
+  column = NULL,
   entry = NULL,
   report_title = "My report title",
   report_text = NULL,
@@ -34,7 +34,7 @@ dbreport(
 
 \item{tbl}{character; Table to be used for summary report (if applicable).}
 
-\item{col}{character; Table columns that should be summarised in report.}
+\item{column}{character; Table columns that should be summarised in report.}
 
 \item{entry}{any; Specific table entries which should be comsidered in the summary table.}
 

@@ -5,9 +5,9 @@ dbreport
 database tables or R-objects (data.table, data.frame, tibble), by
 summarising table meta data and counting distinct entries for all
 (selected) columns. Therefore you can keep track of your ever growing
-database tables in your project and avoid constantly runing queries such
-as the one below, checking which distinct entries your columns have (at
-least, this was my motivation for this package 😄).
+database tables in your project and avoid constantly running queries
+such as the one below, checking which distinct entries your columns have
+(at least, this was my motivation for this package 😄).
 
 ``` sql
 SELECT var1, count(var1) AS n
@@ -43,7 +43,7 @@ con = DBI::dbConnect(drv = RPostgres::Postgres(),
 
 Now we can create a report of any table therein. Let’s just do this for
 the `information_schema.tables` table which is created by default for
-any Postgres or MySQL database. In doing so, we choose to provide an
+any PostgreSQL or MySQL database. In doing so, we choose to provide an
 output directory (`output_dir =`), to provide a super meaningful title
 (`report_title =`) and to add some introductory text (`report_text =`)
 to the report. As our output format (`output_format =`) we choose
@@ -69,12 +69,12 @@ columns is created in the output directory and we can examine it.
 
 ### Specific columns
 
-We can also tweek our report a little more and choose only specific
-columns (`col =`) to be included in the report and create treemap plot
-instead of the lollipop plot (`plot_type =`). For this we access the
-publicly avaible Read-Only [MySQL](https://www.mysql.com) [RNA-sequence
-database](https://docs.rfam.org/en/latest/database.html) and run
-`dbreport()` only on the *ncbi\_id* and *species* column of the
+We can also tweak our report a little more and choose only specific
+columns (`column =`) to be included in the report and create treemap
+plot instead of the lollipop plot (`plot_type =`). For this we access
+the publicly available Read-Only [MySQL](https://www.mysql.com)
+[RNA-sequence database](https://docs.rfam.org/en/latest/database.html)
+and run `dbreport()` only on the *ncbi\_id* and *species* column of the
 *taxonomy* table. In doing so we also output the report to a .pdf
 (`output_format =`).
 
@@ -90,7 +90,7 @@ con = DBI::dbConnect(drv = RMySQL::MySQL(),
 dbreport(con,
          schema = 'Rfam',
          tbl = 'taxonomy',
-         col = c('ncbi_id', 'species'),
+         column = c('ncbi_id', 'species'),
          plot_type = 'treemap',
          output_dir = file.path(tempdir(), 'test_mysql'),
          output_format = 'pdf_document')

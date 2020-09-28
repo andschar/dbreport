@@ -11,7 +11,7 @@ pl_treemap(...)
 
 \item{dat}{data.table object}
 
-\item{col}{Column}
+\item{column}{Column}
 
 \item{plot_limit}{Limit number of plotted lines}
 

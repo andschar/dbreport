@@ -8,7 +8,7 @@ fetch(
   con = NULL,
   schema = NULL,
   tbl = NULL,
-  col = NULL,
+  column = NULL,
   entry = NULL,
   verbose = FALSE,
   ...
@@ -21,7 +21,7 @@ fetch(
 
 \item{tbl}{Database table}
 
-\item{col}{Specific table column}
+\item{column}{Specific table column}
 
 \item{entry}{Entry to be looked for}
 

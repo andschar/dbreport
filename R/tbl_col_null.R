@@ -3,7 +3,7 @@
 #' @param con database connection or R table object
 #' @param schema database schema
 #' @param tbl database table
-#' @param col specific table column
+#' @param column specific table column
 #'
 #' @author Andreas Scharmueller, \email{andschar@@protonmail.com}
 #'
@@ -14,8 +14,8 @@ tbl_col_null = function(...) {
 tbl_col_null.SQLiteConnection = function(con,
                                          schema = NULL,
                                          tbl = NULL,
-                                         col = NULL) {
-  foo = function(con, schema, tbl, col) {
+                                         column = NULL) {
+  foo = function(con, schema, tbl, column) {
     # checking
     if (is.null(tbl)) {
       stop('No data base table supplied.')
@@ -28,11 +28,11 @@ tbl_col_null.SQLiteConnection = function(con,
     }
     # sql
     q = paste0("SELECT count(\"",
-               col,
+               column,
                "\") AS n_null",
                from,
                "\nWHERE \"",
-               col,
+               column,
                "\" IS NULL;")
     # query
     lapply(q, DBI::dbGetQuery, con = con)[[1]]
@@ -41,7 +41,7 @@ tbl_col_null.SQLiteConnection = function(con,
   # preparation
   out = mapply(
     FUN = foo,
-    col = col,
+    column = column,
     MoreArgs = list(
       con = con,
       schema = schema,
@@ -49,7 +49,7 @@ tbl_col_null.SQLiteConnection = function(con,
     )
   )
   out = data.table::transpose(data.table::as.data.table(out))
-  out[, cols := col]
+  out[, cols := column]
   data.table::setnames(out, 'V1', 'n_null')
   data.table::setcolorder(out, 'cols')
   data.table::copy(out)
