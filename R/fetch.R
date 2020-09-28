@@ -28,10 +28,11 @@ fetch = function(con = NULL,
     column = type$cols
   }
   # TODO add missing types
-  cha = c('text', 'varchar')
+  cha = c('text', 'varchar', 'date')
   num = c('integer', 'bigint', 'numeric', 'double precision')
   type[, numeric := data.table::fcase(type %in% cha, FALSE,
-                                      type %in% num, TRUE)]
+                                      type %in% num, TRUE,
+                                      default = FALSE)]
   distinct_l = tbl_col_distinct(
     con = con,
     schema = schema,
