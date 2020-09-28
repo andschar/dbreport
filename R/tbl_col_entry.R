@@ -20,7 +20,7 @@ tbl_col_entry.SQLiteConnection = function(con,
   foo = function(con, schema, tbl, column, entry) {
     # checking
     if (is.null(tbl)) {
-      stop('No data base table supplied.')
+      stop('No database table supplied.')
     }
     # build query
     if (is.null(schema)) {

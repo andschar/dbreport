@@ -45,16 +45,15 @@ tbl_size.PostgreSQLConnection = function(con,
                                          ...) {
   q = paste0("SELECT pg_total_relation_size('", schema, ".", tbl, "');")
   size = DBI::dbGetQuery(con, q)
-  out = conv_byte(size)
-  out
+  
+  conv_byte(size)
 }
 tbl_size.PqConnection = tbl_size.PostgreSQLConnection
 
 # R object ----------------------------------------------------------------
 tbl_size.data.table = function(con,
                                ...) {
-  out = conv_byte(data.table::data.table(as.numeric(object.size(con))))
-  out
+  conv_byte(data.table::data.table(as.numeric(object.size(con))))
 }
 
 tbl_size.data.frame = tbl_size.data.table

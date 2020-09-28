@@ -19,19 +19,19 @@ params:
   file: TRUE
   file_format: 'csv'
   file_type: 'json'
-  verbose: FALSE
+  verbose: TRUE
 title: "`r params$title`"
 date: "`r format(Sys.Date(), '%d.%m.%Y')`"
 ---
 
 ```{r data, echo=FALSE, message=FALSE, warning=FALSE}
-tbl_l <<- fetch(con = con, # TODO debugging
+tbl_l = fetch(con = con,
               schema = schema,
               tbl = tbl,
               column = column,
               entry = entry,
               verbose = verbose)
-meta_dt <<- meta(con = con, # TODO debugging
+meta_dt = meta(con = con,
                schema = schema,
                tbl = tbl,
                plot_type = plot_type,

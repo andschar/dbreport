@@ -28,8 +28,8 @@ tbl_col_distinct.SQLiteConnection = function(con,
                         col_numeric) {
     q_l = list()
     for (i in seq_along(column)) {
-      cl <<- column[i]
-      num <<- col_numeric[i]
+      cl = column[i]
+      num = col_numeric[i]
       # query
       if (!num) {
         select = paste0("SELECT ", sql_quote(con, cl), ", count(*) AS n_distinct") # DROPS NULLs: count(", sql_quote(con, i), ")
@@ -39,11 +39,13 @@ tbl_col_distinct.SQLiteConnection = function(con,
           from = paste0("FROM ", schema, ".", tbl)
         }
         groupby = paste0("GROUP BY ", sql_quote(con, cl))
-        orderby = paste0("ORDER BY 2 DESC") # NOTE ORDER BY INDEX b/c when column is named n "ORDER BY n" errors
+        orderby = "ORDER BY 2 DESC" # NOTE ORDER BY INDEX b/c when column is named n "ORDER BY n" errors
+        limit = "LIMIT 1e4" # NOTE hard-coded leveling off to avoid size explosions!
         q = trimws(paste(select,
                          from,
                          groupby,
                          orderby,
+                         limit,
                          sep = '\n'))
         class(q) = c('character', 'categorical')
       } else if (num) {
@@ -130,18 +132,10 @@ tbl_col_distinct.data.table = function(con,
   for (i in seq_along(todo)) {
     cl = todo[i]
     if (names(cl) %in% c('numeric', 'integer')) {
-      dt = con[,
-               .(
-                 min = min(get(cl)),
-                 p25 = quantile(get(cl), 0.25),
-                 men = mean(get(cl)),
-                 med = median(get(cl)),
-                 p75 = quantile(get(cl), 0.75),
-                 max = max(get(cl))
-               )]
+      dt = con[ , .SD, .SDcols = cl ][ , .(n_distinct = .N), cl ][ order(-n_distinct) ]
       class(dt) = c('continuous', 'data.table', 'data.frame')
     } else {
-      dt = con[, .(n_distinct = .N), cl][order(-n_distinct)]
+      dt = con[ , .SD, .SDcols = cl ][ , .(n_distinct = .N), cl ][ order(-n_distinct) ]
       class(dt) = c('categorical', 'data.table', 'data.frame')
     }
     l_distinct[[i]] = dt

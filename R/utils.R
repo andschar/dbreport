@@ -28,7 +28,7 @@ cbind_fill = function(...,
 #' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'
 conv_byte = function(size) {
-  setDT(size)
+  data.table::setDT(size)
   size[, size := utils:::format.object_size(size[, 1], standard = 'IEC', units = 'auto')] # TODO ::: not allowed on CRAN
   out = size[, data.table::tstrsplit(size, ' ')]
   data.table::setnames(out, c('size', 'unit'))
@@ -114,13 +114,14 @@ subchunkify = function(pl,
 #' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'
 str_limit = function(x, limit = 20L) {
+  # TODO add to andmisc
   if (is.null(limit)) {
     return(x)
   }
   if (limit <= 10) {
     stop('Limit has to be greater than 10.')
   }
-  ifelse(nchar(x) > limit,
+  ifelse(nchar(as.character(x)) > limit,
          paste0(substr(x, 1, limit - 5),
                 '..',
                 substr(x, nchar(x) - 2, nchar(x))),

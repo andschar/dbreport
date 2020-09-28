@@ -2,7 +2,7 @@
 % Please edit documentation in R/dbreport.R
 \name{dbreport}
 \alias{dbreport}
-\title{Create reports of a table}
+\title{Create reports of a table object}
 \usage{
 dbreport(
   con = NULL,
@@ -28,9 +28,9 @@ dbreport(
 )
 }
 \arguments{
-\item{con}{Connection to data base or an R-object (data.table, data.frame, tibble). Required.}
+\item{con}{Connection to database or an R-object (data.table, data.frame, tibble). Required.}
 
-\item{schema}{character; Data base schema (if applicable).}
+\item{schema}{character; Database schema (if applicable).}
 
 \item{tbl}{character; Table to be used for summary report (if applicable).}
 
@@ -64,13 +64,17 @@ dbreport(
 
 \item{exit}{logical; Should database connections be closed after runing dbreport(). Default: TRUE.}
 
-\item{verbose}{TODO}
+\item{verbose}{logical; Should a verbose output be printed to console?}
 }
 \value{
 The function creates a markdown report and exports files
 }
 \description{
-Create reports from data base tables, R table objects (data.table, data.frame, tibble)
+Create reports from database tables, R table objects (data.table, data.frame, tibble)
+}
+\details{
+Columns with more than 10,000 individual entries are leveled off to
+avoid a too large RAM and storage footprint.
 }
 \examples{
 \donttest{

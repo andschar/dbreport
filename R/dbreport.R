@@ -1,11 +1,14 @@
-#' Create reports from data base tables, R table objects (data.table, data.frame, tibble)
+#' Create reports from database tables, R table objects (data.table, data.frame, tibble)
 #'
-#' @title Create reports of a table
+#' @title Create reports of a table object
+#' 
+#' @details Columns with more than 10,000 individual entries are leveled off to
+#' avoid a too large RAM and storage footprint.
 #' 
 #' @import data.table rmarkdown knitr ggplot2 treemap
 #'
-#' @param con Connection to data base or an R-object (data.table, data.frame, tibble). Required.
-#' @param schema character; Data base schema (if applicable).
+#' @param con Connection to database or an R-object (data.table, data.frame, tibble). Required.
+#' @param schema character; Database schema (if applicable).
 #' @param tbl character; Table to be used for summary report (if applicable).
 #' @param column character; Table columns that should be summarised in report.
 #' @param entry any; Specific table entries which should be comsidered in the summary table.
@@ -22,7 +25,7 @@
 #' @param file_format character; To which format should the file(s) be put out (csv, json). Multiple possible.
 #' @param file_type character; Output each column distinct counts set to a single or to multiple files.
 #' @param exit logical; Should database connections be closed after runing dbreport(). Default: TRUE.
-#' @param verbose TODO
+#' @param verbose logical; Should a verbose output be printed to console?
 #' 
 #' @return The function creates a markdown report and exports files 
 #' 
@@ -72,7 +75,7 @@ dbreport = function(con = NULL,
                     verbose = FALSE) {
   # checking
   if (is.null(con))
-    stop('Provide a data base connnection.')
+    stop('Provide a database connnection.')
   if (length(schema) > 1)
     stop('Only one schema can be supplied.')
   if (length(tbl) > 1)

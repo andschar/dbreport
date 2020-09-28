@@ -25,7 +25,6 @@ tbl_col_distinct_n.SQLiteConnection = function(con,
     # NOTE Assume that this works for all SQL software, otherwise make own S3 method
     q_l = list()
     for (i in seq_along(column)) {
-      cl_n <<- column[i]
       cl = column[i]
       # query
       select = paste0("SELECT '", cl, "' AS cols, COUNT(*) AS distinct ")
@@ -82,7 +81,7 @@ tbl_col_distinct_n.PostgreSQLConnection = tbl_col_distinct_n.SQLiteConnection
 tbl_col_distinct_n.data.table = function(con,
                                          ...) {
   data.table::setDT(con)
-  dt = data.table::as.data.table(sapply(con, uniqueN), keep.rownames = TRUE)
+  dt = data.table::as.data.table(sapply(con, data.table::uniqueN), keep.rownames = TRUE)
   data.table::setnames(dt, c('cols', 'distinct'))
   
   dt

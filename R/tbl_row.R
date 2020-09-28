@@ -27,6 +27,7 @@ tbl_row.PostgreSQLConnection = tbl_row.SQLiteConnection
 # R object ----------------------------------------------------------------
 tbl_row.data.table = function(con,
                               ...) {
+  data.table::setDT(con)
   nrow(con)
 }
 

@@ -18,7 +18,7 @@ fetch = function(con = NULL,
                  ...) {
   # checking
   if (is.null(con)) {
-    stop('No data base connection or R-object supplied.')
+    stop('No database connection or R-object supplied.')
   }
   # summary stats
   type = tbl_col_type(con = con,
