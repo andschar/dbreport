@@ -4,15 +4,22 @@
 \alias{pl_lollipop}
 \title{Plots a vertical lollipop ggplot()}
 \usage{
-pl_lollipop(dat = NULL, x = NULL, y = NULL)
+pl_lollipop(...)
 }
 \arguments{
+\item{...}{not used}
+
 \item{dat}{data.table object}
 
-\item{x}{category}
+\item{column}{Column}
 
-\item{y}{count}
+\item{plot_limit}{Limit number of plotted lines}
+
+\item{plot_limit_text}{Limit axis plot axis text}
 }
 \description{
 Plots a vertical lollipop ggplot()
+}
+\author{
+Andreas Scharmueller, \email{andschar@protonmail.com}
 }

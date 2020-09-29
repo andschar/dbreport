@@ -1,12 +1,14 @@
 Package: dbreport
 Title: Automated reports from tables
-Description: dbreport allows you to create automated reports from data base tables,
-    R-objects (e.g. data.table, data.frame, tibble) or from files (e.g. .xlsx, .rds, etc.).
-    The reports sum up most important informations of tables (i.e. how many NULLs a column has
-    or counts distinct entries) and returns them as a .html, .pdf, or .doc file.
+Description: dbreport allows you to create automated reports from database
+    tables, R-objects (e.g. data.table, data.frame, tibble) or from
+    disk files (e.g. .xlsx, .rds, etc.). The reports sum up most important
+    informations of tables (i.e. how many NULLs a column has
+    or counts distinct entries) and returns them as a .html, .pdf, or .doc
+    report.
 Type: Package
-Version: 0.0.0.9015
-Date: 2020-09-08
+Version: 0.0.0.9020
+Date: 2020-09-28
 License: MIT + file LICENSE
 Encoding: UTF-8
 URL: https://github.com/andschar/dbreport
@@ -19,7 +21,7 @@ Authors@R: c(
     )
 Maintainer: Andreas Scharmüller <andschar@protonmail.com>
 Imports:
-    data.table,
+    data.table (>= 1.13.0),
     utils,
     DBI,
     jsonlite,
@@ -27,4 +29,6 @@ Imports:
     knitr,
     ggplot2,
     treemapify
+Suggests:
+    emo
 RoxygenNote: 7.1.1

@@ -4,15 +4,22 @@
 \alias{pl_treemap}
 \title{Plots a ggplot() treemap}
 \usage{
-pl_treemap(dat = NULL, x = NULL, y = NULL)
+pl_treemap(...)
 }
 \arguments{
+\item{...}{not used}
+
 \item{dat}{data.table object}
 
-\item{x}{category}
+\item{column}{Column}
 
-\item{y}{count}
+\item{plot_limit}{Limit number of plotted lines}
+
+\item{plot_limit_text}{Limit axis plot axis text}
 }
 \description{
 Plots a ggplot() treemap
+}
+\author{
+Andreas Scharmueller, \email{andschar@protonmail.com}
 }

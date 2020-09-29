@@ -2,31 +2,34 @@
 % Please edit documentation in R/fetch.R
 \name{fetch}
 \alias{fetch}
-\title{function to retrieve data from databases or R-objects}
+\title{Function to retrieve data from databases or R-objects}
 \usage{
 fetch(
   con = NULL,
   schema = NULL,
   tbl = NULL,
-  col = NULL,
+  column = NULL,
   entry = NULL,
   verbose = FALSE,
   ...
 )
 }
 \arguments{
-\item{con}{Database connection obj or R table object}
+\item{con}{Database connection or R table object}
 
 \item{schema}{Database schema}
 
 \item{tbl}{Database table}
 
-\item{col}{Specific table column}
+\item{column}{Specific table column}
 
 \item{entry}{Entry to be looked for}
 
-\item{verbose}{Verbose output}
+\item{verbose}{Verbose output?}
 }
 \description{
-function to retrieve data from databases or R-objects
+Function to retrieve data from databases or R-objects
+}
+\author{
+Andreas Scharmueller \email{andschar@protonmail.com}
 }

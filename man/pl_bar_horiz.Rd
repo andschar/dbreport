@@ -4,15 +4,22 @@
 \alias{pl_bar_horiz}
 \title{Plots a horizontal bar-ggplot()}
 \usage{
-pl_bar_horiz(dat = NULL, x = NULL, y = NULL)
+pl_bar_horiz(...)
 }
 \arguments{
+\item{...}{not used}
+
 \item{dat}{data.table object}
 
-\item{x}{category}
+\item{column}{Column}
 
-\item{y}{count}
+\item{plot_limit}{Limit number of plotted lines}
+
+\item{plot_limit_text}{Limit axis plot axis text}
 }
 \description{
 Plots a horizontal bar-ggplot()
+}
+\author{
+Andreas Scharmueller, \email{andschar@protonmail.com}
 }

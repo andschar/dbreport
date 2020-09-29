@@ -12,14 +12,14 @@ params:
   plot_limit: 40L
   plot_limit_text: 20L
   out: TRUE
-  col: NULL
+  column: NULL
   entry: NULL
   output_dir: NULL # https://community.rstudio.com/t/is-it-possible-to-save-the-html-output-in-a-directory-which-is-not-the-one-where-the-rmd-file-resides/3588/6
   output_file: 'report'
   file: TRUE
   file_format: 'csv'
   file_type: 'json'
-  verbose: FALSE
+  verbose: TRUE
 title: "`r params$title`"
 date: "`r format(Sys.Date(), '%d.%m.%Y')`"
 ---
@@ -28,7 +28,7 @@ date: "`r format(Sys.Date(), '%d.%m.%Y')`"
 tbl_l = fetch(con = con,
               schema = schema,
               tbl = tbl,
-              col = col,
+              column = column,
               entry = entry,
               verbose = verbose)
 meta_dt = meta(con = con,
@@ -72,32 +72,48 @@ knitr::kable(summary_dt)
 ```{r plot, echo=FALSE, fig.height=7, fig.width=15, dpi=72, message=FALSE, warning=FALSE, results='asis'}
 if (plot_distinct) {
   for (i in seq_along(tbl_l$distinct)) {
-    dat = tbl_l$distinct[[i]]
     col = names(tbl_l$distinct)[i]
-    setDT(dat)
-    dat[ , var20 := as.character(str_limit(get(col), plot_limit_text)) ]
-    dat[ , n_distinct := as.numeric(n_distinct) ] # NB to get rid of integer64, that might be returned - can be done more gracefully - as.integer doesn't work!
-    if (!is.null(plot_limit) & plot_limit < nrow(dat)) {
-      dat = dat[ 1:plot_limit ]
-    }
-    height = ceiling(length(unique(dat$var20)) / 4)
+    dat = tbl_l$distinct[[i]]
+    # TODO height = ceiling(length(unique(dat$var20)) / 4)
+    height = 10
     # header
     cat('  \n###', col, '\n') # OPTION pander::pandoc.header(paste0('Column: ', col), level = 3)
     # plots
-    # TODO add if statement numeric vs caharacter/factor here
-    # TODO then plot numeric variables as violins with quantiles
+    # TODO one function - would have to include subchunkify
     if (plot_type == 'lollipop') {
       subchunkify(
-        print(pl_lollipop(dat = dat, x = 'var20', y = 'n_distinct')),
-        fig.height = height, fig.width = 15,
+        print(
+          pl_lollipop(
+            dat = dat,
+            col = col,
+            plot_limit = plot_limit,
+            plot_limit_text = plot_limit_text
+          )
+        ),
+        fig.height = height,
+        fig.width = 15,
         chunk_name = paste0('plot-', i)
       )
     }
     if (plot_type == 'bar_horiz') {
-      print(pl_bar_horiz(dat = dat, x = 'var20', y = 'n_distinct'))
+      print(
+        pl_bar_horiz(
+          dat = dat,
+          col = col,
+          plot_limit = plot_limit,
+          plot_limit_text = plot_limit_text
+        )
+      )
     }
     if (plot_type == 'treemap') {
-      print(pl_treemap(dat = dat, x = 'var20', y = 'n_distinct'))
+      print(
+        pl_treemap(
+          dat = dat,
+          col = col,
+          plot_limit = plot_limit,
+          plot_limit_text = plot_limit_text
+        )
+      )
     }
     # OLD print(pl_gg(dat = dat, x = 'var20', y = 'n_distinct', plot_type = plot_type))
     cat('<a href="#top">Back to top</a>')
@@ -106,7 +122,6 @@ if (plot_distinct) {
 } else {
   print('Plots should not be printed.')
 }
-
 ```
 
 ```{r write, echo=FALSE, message=FALSE, warning=FALSE}

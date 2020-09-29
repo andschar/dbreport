@@ -16,7 +16,7 @@ subchunkify(pl, fig.height = 7, fig.width = 5, chunk_name = "plot")
 \item{chunk_name}{name of the chunk}
 }
 \description{
-Create sub-chunks for plots
+taken from: https://stackoverflow.com/questions/15365829/dynamic-height-and-width-for-knitr-plots
 }
 \author{
 Andreas Scharmueller \email{andschar@protonmail.com}

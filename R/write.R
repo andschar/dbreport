@@ -1,5 +1,11 @@
-# funciton writing files to dir
-
+#' function to write data to a directory
+#'
+#' @param con database connection or R table object
+#' @param schema database schema
+#' @param tbl database table
+#'
+#' @author Andreas Scharmueller, \email{andschar@@protonmail.com}
+#'
 write_to_dir = function(l = NULL,
                         output_dir = NULL,
                         output_file = NULL,
@@ -7,12 +13,15 @@ write_to_dir = function(l = NULL,
                         file_type = c('single', 'multiple')) {
   # TODO optimize memory handling. Maybe clean RAM cache before every file creation
   # checks
-  if (is.null(l))
+  if (is.null(l)) {
     stop('Provide a list to be put out.')
-  if (is.null(output_dir))
+  }
+  if (is.null(output_dir)) {
     stop('Provide an ouput directory.')
-  if (is.null(output_file))
+  }
+  if (is.null(output_file)) {
     stop('Provide a file name for the output.')
+  }
   file_format = match.arg(file_format)
   file_type = match.arg(file_type)
   # variables
@@ -25,7 +34,7 @@ write_to_dir = function(l = NULL,
       dt = l[[i]]
       nam = names(l)[i]
       if (file_format == 'csv')
-        fwrite(dt, file.path(dir, paste0(nam, '.csv')))
+        data.table::fwrite(dt, file.path(dir, paste0(nam, '.csv')))
       if (file_format == 'json')
         jsonlite::write_json(dt, file.path(dir, paste0(nam, '.json')))
     }
@@ -33,7 +42,7 @@ write_to_dir = function(l = NULL,
   if (file_type == 'single') {
     out = cbind_fill(dflist = l)
     if (file_format == 'csv')
-      fwrite(out, file.path(dir, paste0(output_file, '.csv')))
+      data.table::fwrite(out, file.path(dir, paste0(output_file, '.csv')))
     if (file_format == 'json')
       jsonlite::write_json(out, file.path(dir, paste0(output_file, '.json')))
   }
