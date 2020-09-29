@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>function to transpose example columns — examples_n • dbreport</title>
+<title>function to convert numeric (byte) value into pretty byte representation — conv_byte • dbreport</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="function to transpose example columns — examples_n" />
-<meta property="og:description" content="function to transpose example columns" />
+<meta property="og:title" content="function to convert numeric (byte) value into pretty byte representation — conv_byte" />
+<meta property="og:description" content="taken from: https://stackoverflow.com/questions/29787452/how-do-i-quickly-convert-the-size-element-of-file-info-from-bytes-to-kb-mb-g
+taken from" />
 
 
 
@@ -108,27 +109,24 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>function to transpose example columns</h1>
+    <h1>function to convert numeric (byte) value into pretty byte representation</h1>
     <small class="dont-index">Source: <a href='https://github.com/andschar/dbreport/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>examples_n.Rd</code></div>
+    <div class="hidden name"><code>conv_byte.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>function to transpose example columns</p>
+    <p>taken from: https://stackoverflow.com/questions/29787452/how-do-i-quickly-convert-the-size-element-of-file-info-from-bytes-to-kb-mb-g
+taken from</p>
     </div>
 
-    <pre class="usage"><span class='fu'>examples_n</span><span class='op'>(</span><span class='va'>l</span>, n <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>conv_byte</span><span class='op'>(</span><span class='va'>size</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>l</th>
-      <td><p>a list</p></td>
-    </tr>
-    <tr>
-      <th>n</th>
-      <td><p>number of examples to be selected</p></td>
+      <th>size</th>
+      <td><p>size data.table</p></td>
     </tr>
     </table>
 

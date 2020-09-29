@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>function to transpose example columns — examples_n • dbreport</title>
+<title>Shorten string — str_limit • dbreport</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="function to transpose example columns — examples_n" />
-<meta property="og:description" content="function to transpose example columns" />
+<meta property="og:title" content="Shorten string — str_limit" />
+<meta property="og:description" content="Shorten string" />
 
 
 
@@ -108,30 +108,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>function to transpose example columns</h1>
+    <h1>Shorten string</h1>
     <small class="dont-index">Source: <a href='https://github.com/andschar/dbreport/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>examples_n.Rd</code></div>
+    <div class="hidden name"><code>str_limit.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>function to transpose example columns</p>
+    <p>Shorten string</p>
     </div>
 
-    <pre class="usage"><span class='fu'>examples_n</span><span class='op'>(</span><span class='va'>l</span>, n <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>str_limit</span><span class='op'>(</span><span class='va'>x</span>, limit <span class='op'>=</span> <span class='fl'>20L</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>l</th>
-      <td><p>a list</p></td>
+      <th>x</th>
+      <td><p>string</p></td>
     </tr>
     <tr>
-      <th>n</th>
-      <td><p>number of examples to be selected</p></td>
+      <th>limit</th>
+      <td><p>integer; number of characters to limit string to</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a string</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Andreas Scharmueller <a href='mailto:andschar@protonmail.com'>andschar@protonmail.com</a></p>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create reports of a table — dbreport • dbreport</title>
+<title>Create reports of a table object — dbreport • dbreport</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Create reports of a table — dbreport" />
-<meta property="og:description" content="Create reports from data base tables, R table objects (data.table, data.frame, tibble)" />
+<meta property="og:title" content="Create reports of a table object — dbreport" />
+<meta property="og:description" content="Create reports from database tables, R table objects (data.table, data.frame, tibble)" />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dbreport</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9010</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9020</span>
       </span>
     </div>
 
@@ -108,211 +108,132 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create reports of a table</h1>
+    <h1>Create reports of a table object</h1>
     <small class="dont-index">Source: <a href='https://github.com/andschar/dbreport/blob/master/R/dbreport.R'><code>R/dbreport.R</code></a></small>
     <div class="hidden name"><code>dbreport.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create reports from data base tables, R table objects (data.table, data.frame, tibble)</p>
+    <p>Create reports from database tables, R table objects (data.table, data.frame, tibble)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dbreport</span>(
-  <span class='kw'>con</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>schema</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>entry</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"My report title"</span>,
-  <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>plot_distinct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>plot_type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lollipop"</span>, <span class='st'>"bar_horiz"</span>, <span class='st'>"treemap"</span>),
-  <span class='kw'>plot_limit</span> <span class='kw'>=</span> <span class='fl'>40L</span>,
-  <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>output_file</span> <span class='kw'>=</span> <span class='st'>"report"</span>,
-  <span class='kw'>output_format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"html_document"</span>, <span class='st'>"html_vignette"</span>, <span class='st'>"pdf_document"</span>, <span class='st'>"word_document"</span>),
-  <span class='kw'>file</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>file_format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"csv"</span>, <span class='st'>"json"</span>),
-  <span class='kw'>file_type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"single"</span>, <span class='st'>"multiple"</span>),
-  <span class='kw'>exit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>dbreport</span><span class='op'>(</span>
+  con <span class='op'>=</span> <span class='cn'>NULL</span>,
+  schema <span class='op'>=</span> <span class='cn'>NULL</span>,
+  tbl <span class='op'>=</span> <span class='cn'>NULL</span>,
+  column <span class='op'>=</span> <span class='cn'>NULL</span>,
+  entry <span class='op'>=</span> <span class='cn'>NULL</span>,
+  report_title <span class='op'>=</span> <span class='st'>"My report title"</span>,
+  report_text <span class='op'>=</span> <span class='cn'>NULL</span>,
+  plot_distinct <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  plot_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"lollipop"</span>, <span class='st'>"bar_horiz"</span>, <span class='st'>"treemap"</span><span class='op'>)</span>,
+  plot_limit <span class='op'>=</span> <span class='fl'>40L</span>,
+  plot_limit_text <span class='op'>=</span> <span class='fl'>20L</span>,
+  output_dir <span class='op'>=</span> <span class='cn'>NULL</span>,
+  output_file <span class='op'>=</span> <span class='st'>"report"</span>,
+  output_format <span class='op'>=</span> <span class='fu'>html_document</span><span class='op'>(</span>theme <span class='op'>=</span> <span class='st'>"united"</span>, highlight <span class='op'>=</span> <span class='st'>"tango"</span>, toc <span class='op'>=</span> <span class='cn'>TRUE</span>,
+    toc_float <span class='op'>=</span> <span class='cn'>TRUE</span>, toc_collapsed <span class='op'>=</span> <span class='cn'>FALSE</span>, toc_depth <span class='op'>=</span> <span class='fl'>3</span>, number_sections <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>,
+  file <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  file_format <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"csv"</span>, <span class='st'>"json"</span><span class='op'>)</span>,
+  file_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"single"</span>, <span class='st'>"multiple"</span><span class='op'>)</span>,
+  exit <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>con</th>
-      <td><p>Connection to data base, R-object (data.table, data.frame, tibble). Required.</p></td>
+      <td><p>Connection to database or an R-object (data.table, data.frame, tibble). Required.</p></td>
     </tr>
     <tr>
       <th>schema</th>
-      <td><p>Data base schema (if applicable).</p></td>
+      <td><p>character; Database schema (if applicable).</p></td>
     </tr>
     <tr>
       <th>tbl</th>
-      <td><p>Table to be used for summary report (if applicable).</p></td>
+      <td><p>character; Table to be used for summary report (if applicable).</p></td>
     </tr>
     <tr>
-      <th>col</th>
-      <td><p>Table columns that should be summarised in report.</p></td>
+      <th>column</th>
+      <td><p>character; Table columns that should be summarised in report.</p></td>
     </tr>
     <tr>
       <th>entry</th>
-      <td><p>Table entries which should be comsidered in summary report.</p></td>
+      <td><p>any; Specific table entries which should be comsidered in the summary table.</p></td>
     </tr>
     <tr>
-      <th>title</th>
-      <td><p>Title of summary report.</p></td>
+      <th>report_title</th>
+      <td><p>character; Title of summary report.</p></td>
     </tr>
     <tr>
-      <th>text</th>
-      <td><p>User defined text input to add some description to the report. Default NULL - no text. Can be a character vector or a file.</p></td>
+      <th>report_text</th>
+      <td><p>character or connection; User defined text input to add some description to the report. Default NULL - no text. Can be a character vector or a file.</p></td>
     </tr>
     <tr>
       <th>plot_distinct</th>
-      <td><p>Include plots of ordered distinct counts of each column in summary report.</p></td>
+      <td><p>logical; Include plots of ordered distinct counts of each column entryin the report?</p></td>
     </tr>
     <tr>
       <th>plot_type</th>
-      <td><p>Should a lollipop or a treemap plot be produced?</p></td>
+      <td><p>character; Should a lollipop, barplot or treemap plot be produced?</p></td>
     </tr>
     <tr>
       <th>plot_limit</th>
-      <td><p>Limit distinct count axis in the plots. Default: 100L. Should be set to a reasonable size.</p></td>
+      <td><p>integer; Limit distinct count axis in the plots. Default: 40L.</p></td>
+    </tr>
+    <tr>
+      <th>plot_limit_text</th>
+      <td><p>integer; Limit axis text to a certain length. Default: NULL (i.e. no limit is applied).</p></td>
     </tr>
     <tr>
       <th>output_dir</th>
-      <td><p>To which directory should the output be saved?</p></td>
+      <td><p>character; To which directory should the output be saved?</p></td>
     </tr>
     <tr>
       <th>output_file</th>
-      <td><p>File name</p></td>
+      <td><p>character; File name of the report.</p></td>
     </tr>
     <tr>
       <th>output_format</th>
-      <td><p>Which markdown output_format should be used for rendering the summary report? E.g. html_document, html_vignette, pdf_document, ...</p></td>
+      <td><p>object; directly passed on to rmarkdown::render(). Default: html_document(theme = 'united', highlight = 'tango').</p></td>
     </tr>
     <tr>
       <th>file</th>
-      <td><p>Should one or multiple files for each distinct column counts br created?</p></td>
+      <td><p>logical; Should one or multiple files for each distinct column counts be created?</p></td>
     </tr>
     <tr>
       <th>file_format</th>
-      <td><p>To which format should the file(s) be put out (csv, json). Multiple possible.</p></td>
+      <td><p>character; To which format should the file(s) be put out (csv, json). Multiple possible.</p></td>
     </tr>
     <tr>
       <th>file_type</th>
-      <td><p>Output each column distinct counts set to a single or to multiple files.</p></td>
+      <td><p>character; Output each column distinct counts set to a single or to multiple files.</p></td>
     </tr>
     <tr>
       <th>exit</th>
-      <td><p>logical. Should database connections be closed after runing dbreport(). Default: TRUE.</p></td>
+      <td><p>logical; Should database connections be closed after runing dbreport(). Default: TRUE.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>TODO</p></td>
+      <td><p>logical; Should a verbose output be printed to console?</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The function creates a markdown report and exports files</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Columns with more than 10,000 individual entries are leveled off to
+avoid a too large RAM and storage footprint.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Andreas Scharmueller, <a href='mailto:andschar@protonmail.com'>andschar@protonmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='co'># creates a .html, .pdf, .doc via Rmarkdown</span>
-<span class='fu'>dbreport</span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='no'>iris</span>,
-         <span class='kw'>plot_distinct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-         <span class='kw'>plot_type</span> <span class='kw'>=</span> <span class='st'>'lollipop'</span>,
-         <span class='kw'>plot_limit</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='co'># Limit your plot to the first 15 entries</span>
-         <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>(), <span class='st'>'iris'</span>),
-         <span class='kw'>output_file</span> <span class='kw'>=</span> <span class='st'>'test'</span>,
-         <span class='kw'>output_format</span> <span class='kw'>=</span> <span class='st'>'pdf_document'</span>, <span class='co'># you can also create a .pdf</span>
-         <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>'My iris report'</span>,
-         <span class='kw'>file</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='co'># Output single distinct counts to a file</span>
-         <span class='kw'>file_type</span> <span class='kw'>=</span> <span class='st'>'multiple'</span>,
-         <span class='kw'>file_format</span> <span class='kw'>=</span> <span class='st'>'csv'</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>processing file: rmarkdown_template.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |.....                                                                 |   7%
-#&gt;    inline R code fragments
-#&gt; 
-#&gt;   |                                                                              |..........                                                            |  14%
-#&gt; label: data (with options) 
-#&gt; List of 3
-#&gt;  $ echo   : logi FALSE
-#&gt;  $ message: logi FALSE
-#&gt;  $ warning: logi FALSE
-#&gt; 
-#&gt;   |                                                                              |...............                                                       |  21%
-#&gt;   ordinary text without R code
-#&gt; 
-#&gt;   |                                                                              |....................                                                  |  29%
-#&gt; label: text (with options) 
-#&gt; List of 2
-#&gt;  $ echo   : logi FALSE
-#&gt;  $ results: chr "asis"
-#&gt; 
-#&gt;   |                                                                              |.........................                                             |  36%
-#&gt;   ordinary text without R code
-#&gt; 
-#&gt;   |                                                                              |..............................                                        |  43%
-#&gt; label: meta (with options) 
-#&gt; List of 3
-#&gt;  $ echo   : logi FALSE
-#&gt;  $ message: logi FALSE
-#&gt;  $ warning: logi FALSE
-#&gt; 
-#&gt;   |                                                                              |...................................                                   |  50%
-#&gt;   ordinary text without R code
-#&gt; 
-#&gt;   |                                                                              |........................................                              |  57%
-#&gt; label: table (with options) 
-#&gt; List of 3
-#&gt;  $ echo   : logi FALSE
-#&gt;  $ message: logi FALSE
-#&gt;  $ warning: logi FALSE
-#&gt; 
-#&gt;   |                                                                              |.............................................                         |  64%
-#&gt;   ordinary text without R code
-#&gt; 
-#&gt;   |                                                                              |..................................................                    |  71%
-#&gt; label: plot (with options) 
-#&gt; List of 7
-#&gt;  $ echo      : logi FALSE
-#&gt;  $ fig.height: num 7
-#&gt;  $ fig.width : num 15
-#&gt;  $ dpi       : num 72
-#&gt;  $ message   : logi FALSE
-#&gt;  $ warning   : logi FALSE
-#&gt;  $ results   : chr "asis"
-#&gt; </div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 7 rows containing missing values (geom_segment).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 7 rows containing missing values (geom_point).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 7 rows containing missing values (geom_text).</span></div><div class='output co'>#&gt;   |                                                                              |.......................................................               |  79%
-#&gt;   ordinary text without R code
-#&gt; 
-#&gt;   |                                                                              |............................................................          |  86%
-#&gt; label: plot-OLD (with options) 
-#&gt; List of 7
-#&gt;  $ echo      : logi FALSE
-#&gt;  $ fig.height: num 7
-#&gt;  $ fig.width : num 15
-#&gt;  $ dpi       : num 72
-#&gt;  $ message   : logi FALSE
-#&gt;  $ warning   : logi FALSE
-#&gt;  $ results   : chr "asis"
-#&gt; 
-#&gt;   |                                                                              |.................................................................     |  93%
-#&gt;   ordinary text without R code
-#&gt; 
-#&gt;   |                                                                              |......................................................................| 100%
-#&gt; label: write (with options) 
-#&gt; List of 3
-#&gt;  $ echo   : logi FALSE
-#&gt;  $ message: logi FALSE
-#&gt;  $ warning: logi FALSE
-#&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: rmarkdown_template.knit.md</span></div><div class='output co'>#&gt; /usr/lib/rstudio/bin/pandoc/pandoc +RTS -K512m -RTS rmarkdown_template.utf8.md --to latex --from markdown+autolink_bare_uris+tex_math_single_backslash --output /tmp/RtmpZihX1f/iris/test.tex --self-contained --table-of-contents --toc-depth 3 --highlight-style tango --pdf-engine pdflatex --variable graphics --lua-filter /home/scharmueller/R/x86_64-pc-linux-gnu-library/3.6/rmarkdown/rmd/lua/pagebreak.lua --lua-filter /home/scharmueller/R/x86_64-pc-linux-gnu-library/3.6/rmarkdown/rmd/lua/latex-div.lua --variable 'geometry:margin=1in' </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Output created: /tmp/RtmpZihX1f/iris/test.pdf</span></div><div class='input'># }
-</div></pre>
+    <pre class="examples"></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -328,7 +249,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

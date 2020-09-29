@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>function to transpose example columns — examples_n • dbreport</title>
+<title>S3 method to get counts of distinct entries for every column — tbl_col_distinct_n • dbreport</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="function to transpose example columns — examples_n" />
-<meta property="og:description" content="function to transpose example columns" />
+<meta property="og:title" content="S3 method to get counts of distinct entries for every column — tbl_col_distinct_n" />
+<meta property="og:description" content="S3 method to get counts of distinct entries for every column" />
 
 
 
@@ -108,33 +108,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>function to transpose example columns</h1>
-    <small class="dont-index">Source: <a href='https://github.com/andschar/dbreport/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>examples_n.Rd</code></div>
+    <h1>S3 method to get counts of distinct entries for every column</h1>
+    <small class="dont-index">Source: <a href='https://github.com/andschar/dbreport/blob/master/R/tbl_col_distinct_n.R'><code>R/tbl_col_distinct_n.R</code></a></small>
+    <div class="hidden name"><code>tbl_col_distinct_n.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>function to transpose example columns</p>
+    <p>S3 method to get counts of distinct entries for every column</p>
     </div>
 
-    <pre class="usage"><span class='fu'>examples_n</span><span class='op'>(</span><span class='va'>l</span>, n <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tbl_col_distinct_n</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>l</th>
-      <td><p>a list</p></td>
+      <th>con</th>
+      <td><p>database connection or R table object</p></td>
     </tr>
     <tr>
-      <th>n</th>
-      <td><p>number of examples to be selected</p></td>
+      <th>schema</th>
+      <td><p>database schema</p></td>
+    </tr>
+    <tr>
+      <th>tbl</th>
+      <td><p>database table</p></td>
+    </tr>
+    <tr>
+      <th>column</th>
+      <td><p>specific table column</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>verbose output</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>Andreas Scharmueller <a href='mailto:andschar@protonmail.com'>andschar@protonmail.com</a></p>
+    <p>Andreas Scharmueller, <a href='mailto:andschar@protonmail.com'>andschar@protonmail.com</a></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
