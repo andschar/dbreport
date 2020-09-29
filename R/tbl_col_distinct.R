@@ -132,10 +132,10 @@ tbl_col_distinct.data.table = function(con,
   for (i in seq_along(todo)) {
     cl = todo[i]
     if (names(cl) %in% c('numeric', 'integer')) {
-      dt = con[ , .SD, .SDcols = cl ][ , .(n_distinct = .N), cl ][ order(-n_distinct) ]
+      dt = con[, .SD, .SDcols = cl][, .(n_distinct = .N), cl][order(-n_distinct)]
       class(dt) = c('continuous', 'data.table', 'data.frame')
     } else {
-      dt = con[ , .SD, .SDcols = cl ][ , .(n_distinct = .N), cl ][ order(-n_distinct) ]
+      dt = con[, .SD, .SDcols = cl][, .(n_distinct = .N), cl][order(-n_distinct)]
       class(dt) = c('categorical', 'data.table', 'data.frame')
     }
     l_distinct[[i]] = dt
