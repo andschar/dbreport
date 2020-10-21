@@ -7,7 +7,7 @@ Description: dbreport allows you to create automated reports from database
     or counts distinct entries) and returns them as a .html, .pdf, or .doc
     report.
 Type: Package
-Version: 0.0.0.9021
+Version: 0.0.0.9022
 Date: 2020-10-21
 License: MIT + file LICENSE
 Encoding: UTF-8

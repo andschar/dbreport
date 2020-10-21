@@ -25,7 +25,7 @@ dbreport(
   file_format = c("csv", "json"),
   file_type = c("single", "multiple"),
   exit = TRUE,
-  verbose = FALSE
+  verbose = TRUE
 )
 }
 \arguments{

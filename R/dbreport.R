@@ -74,21 +74,33 @@ dbreport = function(con = NULL,
                     file_format = c('csv', 'json'),
                     file_type = c('single', 'multiple'),
                     exit = TRUE,
-                    verbose = FALSE) {
+                    verbose = TRUE) {
+  # verbose
+  if (verbose) {
+    message('Creating report..', appendLF = FALSE)
+  }
+  # time
+  time_report <<- Sys.time()
   # checking
-  if (is.null(con))
+  if (is.null(con)) {
     stop('Provide a database connnection.')
-  if (length(schema) > 1)
+  }
+  if (length(schema) > 1) {
     stop('Only one schema can be supplied.')
-  if (length(tbl) > 1)
+  }
+  if (length(tbl) > 1) {
     stop('Only one table can be used to create a report. Use mapply for multiple table reports.')
-  if (!is.logical(plot_distinct))
+  }
+  if (!is.logical(plot_distinct)) {
     stop('plot_distinct must be logical.')
+  }
   plot_type = match.arg(plot_type)
-  if (is.null(plot_limit) || !is.numeric(plot_limit))
+  if (is.null(plot_limit) || !is.numeric(plot_limit)) {
     stop('The argument plot_limit must be integer.')
-  if (is.null(output_dir))
+  }
+  if (is.null(output_dir)) {
     stop('Provide a directory for the output: output_dir = NULL')
+  }
   file_format = match.arg(file_format)
   file_type = match.arg(file_type)
   # check db
@@ -128,7 +140,13 @@ dbreport = function(con = NULL,
                       file_format = file_format,
                       file_type = file_type,
                       verbose = verbose
-                    ))
+                    ),
+                    quiet = TRUE)
+  if (verbose) {
+    message('..finished in ',
+            format(round(Sys.time() - time_report, 1), unit = 'auto'), '.',
+            ' Saved under: ', output_dir)
+  }
   if (exit) {
     if (inherits(con, c('PqConnection',
                         'PostgreSQLDriver',
