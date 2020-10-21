@@ -55,7 +55,8 @@ pl_lollipop.continuous = function(dat = NULL,
   # dat = data.table::transpose(dat)
   ggplot2::ggplot(dat, ggplot2::aes(x = get(column))) +
     ggplot2::geom_density() +
-    ggplot2::theme_minimal()
+    ggplot2::theme_minimal() +
+    ggplot2::theme(axis.text.x = ggplot2::element_blank())
   
   # ggplot2::geom_segment(ggplot2::aes(
   #   xend = get(x),

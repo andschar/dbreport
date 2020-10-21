@@ -68,7 +68,7 @@ meta.data.table = function(con = NULL,
                            output_file = NULL,
                            ...) {
   out = data.table::data.table(
-    object = deparse(substitute(con)),
+    table = tbl_name(con = con, schema = schem, tbl = tbl),
     `table type` = paste0(as.character(class(con)), collapse = ', '),
     `table rows` = tbl_row(con),
     `table size` = paste0(tbl_size(con, schema, tbl), collapse = ' '),

@@ -5,8 +5,8 @@
 #' @details Columns with more than 10,000 individual entries are leveled off to
 #' avoid a too large RAM and storage footprint.
 #' 
-#' @import data.table rmarkdown knitr ggplot2 treemap
-#'
+#' @import data.table rmarkdown knitr ggplot2
+#' 
 #' @param con Connection to database or an R-object (data.table, data.frame, tibble). Required.
 #' @param schema character; Database schema (if applicable).
 #' @param tbl character; Table to be used for summary report (if applicable).
@@ -53,21 +53,23 @@ dbreport = function(con = NULL,
                     tbl = NULL,
                     column = NULL,
                     entry = NULL,
-                    report_title = 'My report title',
+                    report_title = NULL,
                     report_text = NULL,
                     plot_distinct = TRUE,
                     plot_type = c('lollipop', 'bar_horiz', 'treemap'),
                     plot_limit = 40L,
                     plot_limit_text = 20L,
                     output_dir = NULL,
-                    output_file = 'report',
-                    output_format = html_document(theme = 'united',
-                                                  highlight = 'tango',
-                                                  toc = TRUE,
-                                                  toc_float = TRUE,
-                                                  toc_collapsed = FALSE,
-                                                  toc_depth = 3,
-                                                  number_sections = FALSE),
+                    output_file = NULL,
+                    output_format = rmarkdown::html_document(
+                      theme = 'united',
+                      highlight = 'tango',
+                      toc = TRUE,
+                      toc_float = TRUE,
+                      toc_collapsed = FALSE,
+                      toc_depth = 3,
+                      number_sections = FALSE
+                    ),
                     file = TRUE,
                     file_format = c('csv', 'json'),
                     file_type = c('single', 'multiple'),
@@ -91,6 +93,18 @@ dbreport = function(con = NULL,
   file_type = match.arg(file_type)
   # check db
   tbl_exists(con = con, schema = schema, tbl = tbl)
+  # object deparse
+  # defaults
+  con_deparse <<- deparse(match.call()$con)
+  tbl_name_defualt = tbl_name(con = con,
+                              schema = schema,
+                              tbl = tbl)
+  if (is.null(report_title)) {
+    report_title = paste0('Table: ', tbl_name_defualt)
+  }
+  if (is.null(output_file)) {
+    output_file = gsub('\\.', '_', tbl_name_defualt)
+  }
   # render
   fl = system.file('rmd', 'rmarkdown_template.Rmd', package = 'dbreport')
   rmarkdown::render(fl,
@@ -116,7 +130,10 @@ dbreport = function(con = NULL,
                       verbose = verbose
                     ))
   if (exit) {
-    if (inherits(con, c('PqConnection', 'PostgreSQLDriver', 'MySQLDriver', 'SQLiteDriver'))) {
+    if (inherits(con, c('PqConnection',
+                        'PostgreSQLDriver',
+                        'MySQLDriver',
+                        'SQLiteDriver'))) {
       DBI::dbDisconnect(con)
     }
   }

@@ -27,13 +27,12 @@ cbind_fill = function(...,
 #'
 #' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'
+#'
 conv_byte = function(size) {
-  data.table::setDT(size)
-  size[, size := utils:::format.object_size(size[, 1], standard = 'IEC', units = 'auto')] # TODO ::: not allowed on CRAN
-  out = size[, data.table::tstrsplit(size, ' ')]
-  data.table::setnames(out, c('size', 'unit'))
+  size_str = strsplit(format(size, standard = 'IEC', units = 'auto'), '\\s')[[1]]
   
-  out
+  data.table::data.table(size = size_str[1],
+                         unit = size_str[2])
 }
 
 #' function to transpose example columns
