@@ -14,7 +14,7 @@
 #' @param entry any; Specific table entries which should be comsidered in the summary table.
 #' @param report_title character; Title of summary report.
 #' @param report_text character or connection; User defined text input to add some description to the report. Default NULL - no text. Can be a character vector or a file.
-#' @param plot_distinct logical; Include plots of ordered distinct counts of each column entryin the report?
+#' @param plot_distinct logical; Include plots of ordered distinct counts of each column entry in the report?
 #' @param plot_type character; Should a lollipop, barplot or treemap plot be produced?
 #' @param plot_limit integer; Limit distinct count axis in the plots. Default: 40L.
 #' @param plot_limit_text integer; Limit axis text to a certain length. Default: NULL (i.e. no limit is applied).
@@ -24,7 +24,7 @@
 #' @param file logical; Should one or multiple files for each distinct column counts be created?
 #' @param file_format character; To which format should the file(s) be put out (csv, json). Multiple possible.
 #' @param file_type character; Output each column distinct counts set to a single or to multiple files.
-#' @param exit logical; Should database connections be closed after runing dbreport(). Default: TRUE.
+#' @param exit logical; Should database connections be closed after running dbreport(). Default: TRUE.
 #' @param verbose logical; Should a verbose output be printed to console?
 #' 
 #' @return The function creates a markdown report and exports files 
@@ -37,7 +37,7 @@
 #' dbreport(
 #'   con = iris,
 #'   report_title = 'My iris report',
-#'   report_text = 'Here goes my text as an inrtoducion to the report.'
+#'   report_text = 'Here goes my text as an introduction to the report.',
 #'   plot_distinct = TRUE,
 #'   plot_type = 'lollipop',
 #'   plot_limit = 10, # Limit your plot to the first 15 entries

@@ -43,7 +43,7 @@ dbreport(
 
 \item{report_text}{character or connection; User defined text input to add some description to the report. Default NULL - no text. Can be a character vector or a file.}
 
-\item{plot_distinct}{logical; Include plots of ordered distinct counts of each column entryin the report?}
+\item{plot_distinct}{logical; Include plots of ordered distinct counts of each column entry in the report?}
 
 \item{plot_type}{character; Should a lollipop, barplot or treemap plot be produced?}
 
@@ -63,7 +63,7 @@ dbreport(
 
 \item{file_type}{character; Output each column distinct counts set to a single or to multiple files.}
 
-\item{exit}{logical; Should database connections be closed after runing dbreport(). Default: TRUE.}
+\item{exit}{logical; Should database connections be closed after running dbreport(). Default: TRUE.}
 
 \item{verbose}{logical; Should a verbose output be printed to console?}
 }
@@ -83,7 +83,7 @@ avoid a too large RAM and storage footprint.
 dbreport(
   con = iris,
   report_title = 'My iris report',
-  report_text = 'Here goes my text as an inrtoducion to the report.'
+  report_text = 'Here goes my text as an introduction to the report.',
   plot_distinct = TRUE,
   plot_type = 'lollipop',
   plot_limit = 10, # Limit your plot to the first 15 entries

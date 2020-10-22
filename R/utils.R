@@ -43,7 +43,7 @@ conv_byte = function(size) {
 #' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'
 examples_n = function (l, n = 3) {
-  l = lapply(lapply(l, `[[`, 1), head, 3)
+  l = lapply(lapply(l, `[[`, 1), utils::head, 3)
   example = data.table::as.data.table(data.table::transpose(l), col.names = names(l[[1]]))
   example[, cols := names(l)]
   data.table::setnames(example, c(paste0('example', 1:(length(

@@ -55,7 +55,7 @@ tbl_size.PqConnection = tbl_size.PostgreSQLConnection
 # R object ----------------------------------------------------------------
 tbl_size.data.table = function(con,
                                ...) {
-  conv_byte(object.size(con))
+  conv_byte(utils::object.size(con))
 }
 
 tbl_size.data.frame = tbl_size.data.table

@@ -25,7 +25,7 @@ pl_lollipop.categorical = function(dat = NULL,
     dat = dat[1:plot_limit]
   }
   # plot
-  ggplot2::ggplot(dat, ggplot2::aes(x = reorder(var20, n_distinct), y = n_distinct)) +
+  ggplot2::ggplot(dat, ggplot2::aes(x = stats::reorder(var20, n_distinct), y = n_distinct)) +
     ggplot2::geom_segment(ggplot2::aes(xend = var20,
                                        y = 0,
                                        yend = n_distinct),
