@@ -7,9 +7,11 @@
 sql_quote(...)
 }
 \arguments{
-\item{con}{database connection}
+\item{...}{Currently not used.}
 
-\item{x}{a string to quote}
+\item{con}{Database connection or R table object.}
+
+\item{x}{A string to quote.}
 }
 \description{
 S3 method to escape SQL variables accordingly

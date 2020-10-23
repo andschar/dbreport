@@ -7,11 +7,13 @@
 tbl_col_type(...)
 }
 \arguments{
-\item{con}{database connection or R table object}
+\item{...}{Currently not used.}
 
-\item{schema}{database schema}
+\item{con}{Database connection or R table object.}
 
-\item{tbl}{database table}
+\item{schema}{Database schema.}
+
+\item{tbl}{Database table.}
 }
 \description{
 S3 method to retrieve the column types of a table

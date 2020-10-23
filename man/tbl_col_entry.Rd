@@ -7,15 +7,17 @@
 tbl_col_entry(...)
 }
 \arguments{
-\item{con}{Database connection or R table object}
+\item{...}{Currently not used.}
 
-\item{schema}{Database schema}
+\item{con}{Database connection or R table object.}
 
-\item{tbl}{Database table}
+\item{schema}{Database schema.}
 
-\item{column}{Column}
+\item{tbl}{Database table.}
 
-\item{entry}{Entry to be looked for}
+\item{column}{Specific table column.}
+
+\item{entry}{Entry to be looked for.}
 }
 \description{
 S3 method to get count of specific entries

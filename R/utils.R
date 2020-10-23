@@ -3,7 +3,8 @@
 #' function to bind data.frame s in a list to a single data.frame
 #'
 #' taken from: https://stackoverflow.com/questions/7962267/cbind-a-dataframe-with-an-empty-dataframe-cbind-fill
-#'
+#' @param ... For list().
+#' @param dflist List of data.fames.
 #' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'
 cbind_fill = function(...,
@@ -23,7 +24,7 @@ cbind_fill = function(...,
 #'
 #' taken from: https://stackoverflow.com/questions/29787452/how-do-i-quickly-convert-the-size-element-of-file-info-from-bytes-to-kb-mb-g
 #' taken from
-#' @param size size data.table
+#' @param size Numeric size value.
 #'
 #' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'
@@ -37,12 +38,13 @@ conv_byte = function(size) {
 
 #' function to transpose example columns
 #'
-#' @param l a list
-#' @param n number of examples to be selected
+#' @param l A list.
+#' @param n Number of examples to be selected.
 #'
 #' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'
 examples_n = function (l, n = 3) {
+  cols = NULL
   l = lapply(lapply(l, `[[`, 1), utils::head, 3)
   example = data.table::as.data.table(data.table::transpose(l), col.names = names(l[[1]]))
   example[, cols := names(l)]
@@ -54,8 +56,8 @@ examples_n = function (l, n = 3) {
 
 #' function to convert numeric values to perc strings
 #'
-#' @param x numeric vector to convert
-#' @param total numeric vector to divide with
+#' @param x Numeric vector to convert.
+#' @param total Numeric vector to divide with.
 #'
 #' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'

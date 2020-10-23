@@ -1,10 +1,10 @@
 #' S3 method to get counts of distinct entries for every column
 #'
-#' @param con database connection or R table object
-#' @param schema database schema
-#' @param tbl database table
-#' @param column specific table column
-#' @param verbose verbose output
+#' @param con Database connection or R table object.
+#' @param schema Database schema.
+#' @param tbl Database table.
+#' @param column Specific table column.
+#' @param ... Currently not used.
 #'
 #' @author Andreas Scharmueller, \email{andschar@@protonmail.com}
 #'
@@ -15,8 +15,7 @@ tbl_col_distinct_n = function(...) {
 tbl_col_distinct_n.SQLiteConnection = function(con,
                                                schema = NULL,
                                                tbl = NULL,
-                                               column = NULL,
-                                               verbose = FALSE) {
+                                               column = NULL) {
   # helper function
   f_distinct_n = function(con,
                           schema,
@@ -64,8 +63,6 @@ tbl_col_distinct_n.SQLiteConnection = function(con,
   for (i in seq_along(l_q_distinct_n)) {
     q = l_q_distinct_n[[i]]
     nam = names(l_q_distinct_n)[i]
-    if (verbose)
-      message('Fetching: ', nam)
     l_distinct_n[[i]] = DBI::dbGetQuery(con, q)
     data.table::setDT(l_distinct_n[[i]])
     names(l_distinct_n)[i] = nam

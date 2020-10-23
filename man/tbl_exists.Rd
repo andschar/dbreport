@@ -7,11 +7,13 @@
 tbl_exists(...)
 }
 \arguments{
-\item{con}{database connection obj or R table object}
+\item{...}{Currently not used.}
 
-\item{schema}{database schema}
+\item{con}{Database connection obj or R table object.}
 
-\item{tbl}{database table}
+\item{schema}{Database schema.}
+
+\item{tbl}{Database table.}
 }
 \description{
 S3 method to check whether provided table exists

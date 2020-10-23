@@ -25,13 +25,13 @@ date: "`r format(Sys.Date(), '%d.%m.%Y')`"
 ---
 
 ```{r data, echo=FALSE, message=FALSE, warning=FALSE}
-tbl_l = fetch(con = con,
+tbl_l <<- fetch(con = con,
               schema = schema,
               tbl = tbl,
               column = column,
               entry = entry,
               verbose = verbose)
-meta_dt = meta(con = con,
+meta_dt <<- meta(con = con,
                schema = schema,
                tbl = tbl,
                plot_type = plot_type,
@@ -71,6 +71,7 @@ knitr::kable(summary_dt)
 ## Column plots
 ```{r plot, echo=FALSE, fig.height=7, fig.width=15, dpi=72, message=FALSE, warning=FALSE, results='asis'}
 if (plot_distinct) {
+  verbose_message(verbose, 'Creating plots.')
   for (i in seq_along(tbl_l$distinct)) {
     col = names(tbl_l$distinct)[i]
     dat = tbl_l$distinct[[i]]
@@ -125,13 +126,14 @@ if (plot_distinct) {
 ```
 
 ```{r write, echo=FALSE, message=FALSE, warning=FALSE}
-if (is.null(file)) {
-  print('Files should not be written.')
-} else {
+if (!is.null(file)) {
+  verbose_message(verbose, 'Creating files.')
   write_to_dir(l = tbl_l$distinct,
                output_dir = output_dir,
                output_file = output_file,
                file_format = file_format,
                file_type = file_type)
+} else {
+  print('Files should not be written.')
 }
 ```

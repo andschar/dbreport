@@ -7,11 +7,13 @@
 tbl_name(...)
 }
 \arguments{
-\item{con}{database connection or R table object}
+\item{...}{Currently not used.}
 
-\item{schema}{database schema}
+\item{con}{Database connection or R table object.}
 
-\item{tbl}{database table}
+\item{schema}{Database schema.}
+
+\item{tbl}{database table.}
 }
 \description{
 S3 method to retrieve name of table

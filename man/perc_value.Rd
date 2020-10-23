@@ -7,9 +7,9 @@
 perc_value(x, total)
 }
 \arguments{
-\item{x}{numeric vector to convert}
+\item{x}{Numeric vector to convert.}
 
-\item{total}{numeric vector to divide with}
+\item{total}{Numeric vector to divide with.}
 }
 \description{
 function to convert numeric values to perc strings

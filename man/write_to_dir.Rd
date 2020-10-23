@@ -13,11 +13,13 @@ write_to_dir(
 )
 }
 \arguments{
-\item{con}{database connection or R table object}
+\item{output_dir}{Directory to write to.}
 
-\item{schema}{database schema}
+\item{output_file}{Name of the output file.}
 
-\item{tbl}{database table}
+\item{file_format}{Format of the file.}
+
+\item{file_type}{Should a single or multiple files be written?}
 }
 \description{
 function to write data to a directory

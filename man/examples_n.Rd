@@ -7,9 +7,9 @@
 examples_n(l, n = 3)
 }
 \arguments{
-\item{l}{a list}
+\item{l}{A list.}
 
-\item{n}{number of examples to be selected}
+\item{n}{Number of examples to be selected.}
 }
 \description{
 function to transpose example columns

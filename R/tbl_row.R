@@ -1,8 +1,9 @@
 #' S3 method to retrieve the number of rows
 #'
-#' @param con database connection or R table object
-#' @param schema database schema
-#' @param tbl database table
+#' @param con Database connection or R table object.
+#' @param schema Database schema.
+#' @param tbl database table.
+#' @param ... Currently not used.
 #'
 #' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'

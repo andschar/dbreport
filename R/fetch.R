@@ -1,11 +1,12 @@
 #' Function to retrieve data from databases or R-objects
 #'
-#' @param con Database connection or R table object
-#' @param schema Database schema
-#' @param tbl Database table
-#' @param column Specific table column
-#' @param entry Entry to be looked for
+#' @param con Database connection or R table object.
+#' @param schema Database schema.
+#' @param tbl Database table.
+#' @param column Specific table column.
+#' @param entry Entry to be looked for.
 #' @param verbose Verbose output?
+#' @param ... Currently not used.
 #'
 #' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'

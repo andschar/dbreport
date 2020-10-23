@@ -1,7 +1,8 @@
 #' S3 method to escape SQL variables accordingly
 #'
-#' @param con database connection
-#' @param x a string to quote
+#' @param con Database connection or R table object.
+#' @param x A string to quote.
+#' @param ... Currently not used.
 #' 
 #' @author Andreas Scharmueller, \email{andschar@@protonmail.com}
 #' 

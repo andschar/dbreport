@@ -1,11 +1,12 @@
 #' S3 method to get distinct entries for every column
 #'
-#' @param con database connection or R table object
-#' @param schema database schema
-#' @param tbl database table
-#' @param column specific table column
-#' @param col_numeric logical; whether a column is numeric or not
-#' @param verbose verbose output
+#' @param con Database connection or R table object.
+#' @param schema Database schema.
+#' @param tbl Database table.
+#' @param column Specific table column.
+#' @param col_numeric Is a column numeric or not?
+#' @param verbose Verbose output.
+#' @param ... Currently not used.
 #'
 #' @author Andreas Scharmueller, \email{andschar@@protonmail.com}
 #'

@@ -15,17 +15,19 @@ fetch(
 )
 }
 \arguments{
-\item{con}{Database connection or R table object}
+\item{con}{Database connection or R table object.}
 
-\item{schema}{Database schema}
+\item{schema}{Database schema.}
 
-\item{tbl}{Database table}
+\item{tbl}{Database table.}
 
-\item{column}{Specific table column}
+\item{column}{Specific table column.}
 
-\item{entry}{Entry to be looked for}
+\item{entry}{Entry to be looked for.}
 
 \item{verbose}{Verbose output?}
+
+\item{...}{Currently not used.}
 }
 \description{
 Function to retrieve data from databases or R-objects

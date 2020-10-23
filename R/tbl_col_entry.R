@@ -1,10 +1,11 @@
 #' S3 method to get count of specific entries
 #'
-#' @param con Database connection or R table object
-#' @param schema Database schema
-#' @param tbl Database table
-#' @param column Column
-#' @param entry Entry to be looked for
+#' @param con Database connection or R table object.
+#' @param schema Database schema.
+#' @param tbl Database table.
+#' @param column Specific table column.
+#' @param entry Entry to be looked for.
+#' @param ... Currently not used.
 #'
 #' @author Andreas Scharmueller, \email{andschar@@protonmail.com}
 #'

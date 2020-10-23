@@ -7,21 +7,23 @@
 meta(...)
 }
 \arguments{
-\item{con}{Database connection or R table object}
+\item{...}{Currently not used.}
 
-\item{schema}{Database schema}
+\item{con}{Database connection or R table object.}
 
-\item{tbl}{Database table}
+\item{schema}{Database schema.}
 
-\item{plot_type}{Plot type}
+\item{tbl}{Database table.}
 
-\item{plot_limit}{Plot limit}
+\item{plot_type}{Plot type.}
 
-\item{plot_limit_text}{Plot text limit}
+\item{plot_limit}{Plot limit.}
 
-\item{output_dir}{Output directory}
+\item{plot_limit_text}{Plot text limit.}
 
-\item{output_file}{Output file}
+\item{output_dir}{Output directory.}
+
+\item{output_file}{Output file.}
 }
 \description{
 Function to retrieve meta data from databases or R-objects

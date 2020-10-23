@@ -1,8 +1,9 @@
 #' S3 method to check whether provided table exists
 #'
-#' @param con database connection obj or R table object
-#' @param schema database schema
-#' @param tbl database table
+#' @param con Database connection obj or R table object.
+#' @param schema Database schema.
+#' @param tbl Database table.
+#' @param ... Currently not used.
 #'  
 tbl_exists = function(...) {
   UseMethod('tbl_exists')

@@ -7,13 +7,15 @@
 tbl_col_null(...)
 }
 \arguments{
-\item{con}{database connection or R table object}
+\item{...}{Currently not used.}
 
-\item{schema}{database schema}
+\item{con}{Database connection or R table object.}
 
-\item{tbl}{database table}
+\item{schema}{Database schema.}
 
-\item{column}{specific table column}
+\item{tbl}{Database table.}
+
+\item{column}{Specific table column.}
 }
 \description{
 S3 method to get the amount of NULLs or NAs in each column

@@ -1,13 +1,14 @@
 #' Function to retrieve meta data from databases or R-objects
 #'
-#' @param con Database connection or R table object
-#' @param schema Database schema
-#' @param tbl Database table
-#' @param plot_type Plot type
-#' @param plot_limit Plot limit
-#' @param plot_limit_text Plot text limit
-#' @param output_dir Output directory
-#' @param output_file Output file
+#' @param con Database connection or R table object.
+#' @param schema Database schema.
+#' @param tbl Database table.
+#' @param plot_type Plot type.
+#' @param plot_limit Plot limit.
+#' @param plot_limit_text Plot text limit.
+#' @param output_dir Output directory.
+#' @param output_file Output file.
+#' @param ... Currently not used.
 #'
 #' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'

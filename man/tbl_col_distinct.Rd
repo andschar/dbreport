@@ -7,17 +7,19 @@
 tbl_col_distinct(...)
 }
 \arguments{
-\item{con}{database connection or R table object}
+\item{...}{Currently not used.}
 
-\item{schema}{database schema}
+\item{con}{Database connection or R table object.}
 
-\item{tbl}{database table}
+\item{schema}{Database schema.}
 
-\item{column}{specific table column}
+\item{tbl}{Database table.}
 
-\item{col_numeric}{logical; whether a column is numeric or not}
+\item{column}{Specific table column.}
 
-\item{verbose}{verbose output}
+\item{col_numeric}{Is a column numeric or not?}
+
+\item{verbose}{Verbose output.}
 }
 \description{
 S3 method to get distinct entries for every column

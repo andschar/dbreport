@@ -1,8 +1,9 @@
 #' function to write data to a directory
 #'
-#' @param con database connection or R table object
-#' @param schema database schema
-#' @param tbl database table
+#' @param output_dir Directory to write to.
+#' @param output_file Name of the output file.
+#' @param file_format Format of the file.
+#' @param file_type Should a single or multiple files be written?
 #'
 #' @author Andreas Scharmueller, \email{andschar@@protonmail.com}
 #'

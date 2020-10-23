@@ -1,8 +1,9 @@
 #' S3 method to retrieve size of table
 #'
-#' @param con database connection or R table object
-#' @param schema database schema
-#' @param tbl database table
+#' @param con Database connection or R table object.
+#' @param schema Database schema.
+#' @param tbl Database table.
+#' @param ... Currently not used.
 #'
 #' @author Andreas Scharmueller \email{andschar@@protonmail.com}
 #'

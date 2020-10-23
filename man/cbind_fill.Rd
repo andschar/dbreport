@@ -6,6 +6,11 @@
 \usage{
 cbind_fill(..., dflist = NULL)
 }
+\arguments{
+\item{...}{For list().}
+
+\item{dflist}{List of data.fames.}
+}
 \description{
 taken from: https://stackoverflow.com/questions/7962267/cbind-a-dataframe-with-an-empty-dataframe-cbind-fill
 }

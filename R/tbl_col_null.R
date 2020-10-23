@@ -1,9 +1,10 @@
 #' S3 method to get the amount of NULLs or NAs in each column
 #'
-#' @param con database connection or R table object
-#' @param schema database schema
-#' @param tbl database table
-#' @param column specific table column
+#' @param con Database connection or R table object.
+#' @param schema Database schema.
+#' @param tbl Database table.
+#' @param column Specific table column.
+#' @param ... Currently not used.
 #'
 #' @author Andreas Scharmueller, \email{andschar@@protonmail.com}
 #'

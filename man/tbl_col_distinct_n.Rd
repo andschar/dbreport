@@ -7,15 +7,17 @@
 tbl_col_distinct_n(...)
 }
 \arguments{
-\item{con}{database connection or R table object}
+\item{...}{Currently not used.}
 
-\item{schema}{database schema}
+\item{con}{Database connection or R table object.}
 
-\item{tbl}{database table}
+\item{schema}{Database schema.}
 
-\item{column}{specific table column}
+\item{tbl}{Database table.}
 
-\item{verbose}{verbose output}
+\item{column}{Specific table column.}
+
+\item{verbose}{Verbose output.}
 }
 \description{
 S3 method to get counts of distinct entries for every column

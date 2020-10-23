@@ -7,7 +7,7 @@
 conv_byte(size)
 }
 \arguments{
-\item{size}{size data.table}
+\item{size}{Numeric size value.}
 }
 \description{
 taken from: https://stackoverflow.com/questions/29787452/how-do-i-quickly-convert-the-size-element-of-file-info-from-bytes-to-kb-mb-g
