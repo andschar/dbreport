@@ -16,8 +16,6 @@ tbl_col_distinct_n(...)
 \item{tbl}{Database table.}
 
 \item{column}{Specific table column.}
-
-\item{verbose}{Verbose output.}
 }
 \description{
 S3 method to get counts of distinct entries for every column

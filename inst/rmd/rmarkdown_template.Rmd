@@ -71,7 +71,7 @@ knitr::kable(summary_dt)
 ## Column plots
 ```{r plot, echo=FALSE, fig.height=7, fig.width=15, dpi=72, message=FALSE, warning=FALSE, results='asis'}
 if (plot_distinct) {
-  verbose_message(verbose, 'Creating plots.')
+  verbose_message(verbose, '..Plotting.')
   for (i in seq_along(tbl_l$distinct)) {
     col = names(tbl_l$distinct)[i]
     dat = tbl_l$distinct[[i]]
@@ -127,7 +127,7 @@ if (plot_distinct) {
 
 ```{r write, echo=FALSE, message=FALSE, warning=FALSE}
 if (!is.null(file)) {
-  verbose_message(verbose, 'Creating files.')
+  verbose_message(verbose, '..Writing files.')
   write_to_dir(l = tbl_l$distinct,
                output_dir = output_dir,
                output_file = output_file,

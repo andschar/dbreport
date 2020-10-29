@@ -65,6 +65,7 @@ tbl_col_distinct_n.SQLiteConnection = function(con,
     nam = names(l_q_distinct_n)[i]
     l_distinct_n[[i]] = DBI::dbGetQuery(con, q)
     data.table::setDT(l_distinct_n[[i]])
+    # l_distinct_n[[i]][ , distinct := as.numeric(distinct) ]
     names(l_distinct_n)[i] = nam
   }
   
@@ -78,7 +79,8 @@ tbl_col_distinct_n.PostgreSQLConnection = tbl_col_distinct_n.SQLiteConnection
 tbl_col_distinct_n.data.table = function(con,
                                          ...) {
   data.table::setDT(con)
-  dt = data.table::as.data.table(sapply(con, data.table::uniqueN), keep.rownames = TRUE)
+  dt = data.table::as.data.table(sapply(con, data.table::uniqueN),
+                                 keep.rownames = TRUE)
   data.table::setnames(dt, c('cols', 'distinct'))
   
   dt

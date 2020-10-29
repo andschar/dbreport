@@ -17,9 +17,7 @@ tbl_col_distinct(...)
 
 \item{column}{Specific table column.}
 
-\item{col_numeric}{Is a column numeric or not?}
-
-\item{verbose}{Verbose output.}
+\item{col_type}{Type of column.}
 }
 \description{
 S3 method to get distinct entries for every column

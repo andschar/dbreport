@@ -128,3 +128,36 @@ str_limit = function(x, limit = 20L) {
                 substr(x, nchar(x) - 2, nchar(x))),
          x)
 }
+
+#' Verbose ouput messages
+#' 
+#' @param verbose Should a verbose output be printed to console?
+#' @param msg Message to be printed to console
+#' 
+#' @author Andreas Scharmueller \email{andschar@@protonmail.com}
+#' 
+verbose_message = function(verbose,
+                           msg) {
+  if (verbose) {
+    message(msg)
+  }
+}
+
+#' Unified plot theme
+#' 
+theme_minimal2 = function() {
+  ggplot2::theme_minimal() +
+    ggplot2::theme(
+      axis.text.x = ggplot2::element_text(size = 14),
+      axis.text.y = ggplot2::element_text(size = 14)
+    )
+}
+
+
+
+
+
+
+
+
+

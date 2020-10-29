@@ -26,7 +26,7 @@ tbl_exists.PostgreSQLConnection = tbl_exists.SQLiteConnection
 tbl_exists.data.table = function(con,
                                  schema = NULL,
                                  tbl = NULL) {
-  if (!is.data.table(con)) {
+  if (!data.table::is.data.table(con)) {
     stop('Table does not exist: ', con)
   }
 }
@@ -37,17 +37,18 @@ tbl_exists.data.frame = function(con,
     stop('Table does not exist: ', con)
   }
 }
-tbl_exists.tibble = function(con,
+tbl_exists.tbl_df = function(con,
                              schema = NULL,
                              tbl = NULL) {
-  if (!is_tibble(con)) {
+  if (!inherits(con, c('tbl_df', 'tbl'))) {
     stop('Table does not exist: ', con)
   }
 }
+tbl_exists.tbl = tbl_exists.tbl_df
 tbl_exists.list = function(con,
                            schema = NULL,
                            tbl = NULL) {
-  stop('dbreport does not work on lists.')
+  stop('The dbreport package does not work on lists.')
 }
 
 

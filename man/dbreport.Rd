@@ -21,7 +21,7 @@ dbreport(
   output_format = rmarkdown::html_document(theme = "united", highlight = "tango", toc =
     TRUE, toc_float = TRUE, toc_collapsed = FALSE, toc_depth = 3, number_sections =
     FALSE),
-  file = TRUE,
+  file = FALSE,
   file_format = c("csv", "json"),
   file_type = c("single", "multiple"),
   exit = TRUE,

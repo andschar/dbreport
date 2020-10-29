@@ -36,7 +36,6 @@ tbl_size.MySQLConnection = function(con,
     "';"
   )
   size = DBI::dbGetQuery(con, q)
-  size = DBI::dbGetQuery(con, q)
   size = structure(as.numeric(size[1,]), class = 'object_size')
   conv_byte(size)
 }

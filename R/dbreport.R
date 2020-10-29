@@ -70,17 +70,15 @@ dbreport = function(con = NULL,
                       toc_depth = 3,
                       number_sections = FALSE
                     ),
-                    file = TRUE,
+                    file = FALSE,
                     file_format = c('csv', 'json'),
                     file_type = c('single', 'multiple'),
                     exit = TRUE,
                     verbose = TRUE) {
   # verbose
-  if (verbose) {
-    message('Creating report..', appendLF = FALSE)
-  }
+  verbose_message(verbose, 'Creating report..')
   # time
-  time_report <<- Sys.time()
+  time_report <<- Sys.time() # TODO save to disk
   # checking
   if (is.null(con)) {
     stop('Provide a database connnection.')
@@ -107,7 +105,7 @@ dbreport = function(con = NULL,
   tbl_exists(con = con, schema = schema, tbl = tbl)
   # object deparse
   # defaults
-  con_deparse <<- deparse(match.call()$con)
+  con_deparse <<- deparse(match.call()$con) # TODO store it on  disk
   tbl_name_defualt = tbl_name(con = con,
                               schema = schema,
                               tbl = tbl)
@@ -142,11 +140,12 @@ dbreport = function(con = NULL,
                       verbose = verbose
                     ),
                     quiet = TRUE)
-  if (verbose) {
-    message('..finished in ',
-            format(round(Sys.time() - time_report, 1), unit = 'auto'), '.',
-            ' Saved under: ', output_dir)
-  }
+  verbose_message(verbose, 
+                  paste0('Report finished in ',
+                         format(round(Sys.time() - time_report, 1), unit = 'auto'),
+                         '.'))
+  verbose_message(verbose,
+                  paste0('Saved under: ', output_dir))
   if (exit) {
     if (inherits(con, c('PqConnection',
                         'PostgreSQLDriver',
